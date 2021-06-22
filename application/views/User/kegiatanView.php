@@ -7,7 +7,7 @@
       <?php foreach ($kegiatan as $row) : ?>
         <div class="col-lg-4 mb-5">
           <div class="card shadow" style="width: 18rem;">
-            <img src="<?= base_url('assets/img/kegiatan/' . $row['foto']) ?>" class="card-img-top" alt="...">
+            <img src="<?= base_url('assets/img/kegiatan/' . $row['foto']) ?>" class="card-img-top" alt="..." style="height: 12rem;">
             <div class="card-body">
               <h5 class="card-title"><?= $row['kegiatan']; ?></h5>
               <p class="card-text"><?= substr($row['isi_kegiatan'], 0, 100); ?>.</p>

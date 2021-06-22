@@ -58,7 +58,7 @@
       <?php $no=1; foreach ($dataibu as $row): ?>
       <tr>
         <td><?= $no++; ?></td>
-        <td><?= $row['nama']; ?></td>
+        <td><?= $row->dataibu['nama']; ?></td>
         <td><?= $row['nama']; ?></td>
         <td><?= $row['no_telepon']; ?></td>
         <td><?= $row['alamat']; ?></td>

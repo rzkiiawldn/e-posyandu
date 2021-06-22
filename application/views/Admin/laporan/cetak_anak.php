@@ -33,6 +33,8 @@
         <td width="400">
         <center>
           <font size="5" class="besar"><b>Data Anak</b></font><br>
+          <?php if($kode != '') { ?>
+          <font size="5" class="besar"><b><?= $kode; ?></b></font> <?php } ?>
         </center>
         </td>
       </tr>

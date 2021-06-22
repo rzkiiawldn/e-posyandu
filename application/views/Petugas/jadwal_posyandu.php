@@ -52,7 +52,7 @@ if ($this->session->flashdata('petugas')) {
                 foreach ($jadwal_posyandu as $value) : ?>
                   <tr>
                     <td><?= $i; ?></td>
-                    <td><?= $value['hari'] ?></td>
+                    <td><?= format_indo($value['hari']) ?></td>
                     <td><?= $value['jam_buka'] ?></td>
                     <td><?= $value['jam_tutup'] ?></td>
                     <td class>
@@ -93,7 +93,7 @@ if ($this->session->flashdata('petugas')) {
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label class="bmd-label-floating" name="hari">hari</label>
                         <select name="hari" id="hari" class="form-control" required>
                           <option value="" selected disabled>--pilih--</option>
@@ -102,6 +102,10 @@ if ($this->session->flashdata('petugas')) {
                           <?php endforeach; ?>
                         </select>
                         <input type="hidden" class="form-control" name="kode_posyandu" value="<?= $kode_posyandu ?>" required>
+                      </div> -->
+                      <div class="form-group">
+                        <label class="bmd-label-floating" name="hari">Hari & Tanggal</label>
+                        <input type="date" class="form-control" name="hari" required>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -154,7 +158,7 @@ if ($this->session->flashdata('petugas')) {
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <select name="hari" id="hari" class="form-control" required>
                             <option value="" selected disabled>--pilih--</option>
                             <?php foreach ($hari as $row) : ?>
@@ -166,6 +170,10 @@ if ($this->session->flashdata('petugas')) {
                             <?php endforeach; ?>
                           </select>
                           <input type="hidden" class="form-control" name="id_jadwal" value="<?= $value['id_jadwal'] ?>" required>
+                        </div> -->
+                        <div class="form-group">
+                          <label class="bmd-label-floating" name="hari">Hari</label>
+                          <input type="date" class="form-control" name="hari" required value="<?= $value['hari'] ?>">
                         </div>
                       </div>
                       <div class="col-md-6">

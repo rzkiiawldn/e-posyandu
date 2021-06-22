@@ -19,7 +19,7 @@
             foreach ($jadwal as $value) : ?>
               <tr>
                 <th scope="row"><?= $no++; ?></th>
-                <td><?= $value['hari']; ?></td>
+                <td><?= format_indo($value['hari']); ?></td>
                 <td><?= $value['jam_buka']; ?></td>
                 <td><?= $value['jam_tutup'] ?></td>
               </tr>

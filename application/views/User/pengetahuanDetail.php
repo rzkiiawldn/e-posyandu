@@ -4,7 +4,7 @@
       <div class="col-lg-10 ftco-animate">
         <div class="blog-entry align-self-stretch">
           <p>
-            <img src="<?= base_url('assets/img/pengetahuan/' . $pengetahuan['foto']) ?>" alt="foto pengetahuan" class="img-fluid" width="100%">
+            <img src="<?= base_url('assets/img/pengetahuan/' . $pengetahuan['foto']) ?>" alt="foto pengetahuan" class="img-fluid" width="80%">
           </p>
           <div class="text mt-3">
             <div class="posted mb-3 d-flex">

@@ -30,7 +30,7 @@
                                     <input type="text" class="form-control" name="nama_posyandu" value="<?= $value['nama_posyandu'] ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="bmd-label-floating" name="kode_posyandu">Tempat Lahir</label>
+                                    <label class="bmd-label-floating" name="kode_posyandu">Kode Posyandu</label>
                                     <input type="text" class="form-control" name="kode_posyandu" value="<?= $value['kode_posyandu'] ?>" required>
                                 </div>
                                 <div class="form-group">

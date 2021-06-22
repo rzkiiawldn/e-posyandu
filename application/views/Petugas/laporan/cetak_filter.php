@@ -55,7 +55,7 @@
         <td width="200px"><b>Jenis Imunisasi</b></td>
         <td><b>Status</b></td>
       </tr>
-      <?php $no=1; foreach ($dataImunisasi as $row): ?>
+      <?php $no=1; foreach ($dataImunisasi_filtertanggal as $row): ?>
       <tr>
         <td><?= $no++; ?></td>
         <td><?= $row['nik']; ?></td>

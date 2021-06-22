@@ -90,6 +90,7 @@ if ($this->session->flashdata('petugas')) {
                   <th> Judul </th>
                   <th> Isi </th>
                   <th> Kategori </th>
+                  <th> Foto </th>
                   <th> Aksi </th>
                 </tr>
               </thead>
@@ -101,6 +102,7 @@ if ($this->session->flashdata('petugas')) {
                     <td><?= $value['judul'] ?></td>
                     <td><?= substr($value['isi_pengetahuan'], 0, 80) ?></td>
                     <td><?= $value['kategori'] ?></td>
+                    <td><img src="<?= base_url('assets/img/pengetahuan/' . $value['foto']) ?>" alt="" class="img" width="100px"></td>
                     <td class>
                       <a class="badge badge-warning btn-lg" href="#" role="button" data-toggle="modal" data-target="#edit<?= $value['id_pengetahuan'] ?>">Edit</a>
                       <a class="badge badge-danger btn-lg" href="<?= base_url() ?>petugas/hapus_pengetahuan/<?= $value['id_pengetahuan']; ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data ?');" class="badge badge-danger" data-popup="tooltip" data-placement="top" title="Hapus Data">Delete</a>
@@ -143,16 +145,18 @@ if ($this->session->flashdata('petugas')) {
                       <input type="text" class="form-control" id="judul" name="judul">
                       <input type="hidden" class="form-control" id="kode_posyandu" name="kode_posyandu" value="<?= $kode_posyandu ?>">
                     </div>
-                    <div class="form-group form-file-upload form-file-multiple col-md-6">
-                      <label for="foto">foto</label>
-                      <input type="file" multiple="foto" class="inputFileHidden">
-                      <div class="input-group">
-                        <input type="text" name="foto" id="foto" class="form-control inputFileVisible" placeholder="Single File">
-                        <span class="input-group-btn">
-                          <button type="button" class="btn btn-fab btn-round btn-primary">
-                            <i class="material-icons">attach_file</i>
-                          </button>
-                        </span>
+                    <div class="col-md-6">
+                      <label for="foto">Foto</label>
+                      <div class="form-group form-file-upload form-file-multiple">
+                        <input type="file" name="foto" multiple="" class="inputFileHidden">
+                        <div class="input-group">
+                          <input type="text" class="form-control inputFileVisible" placeholder="Single File">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-fab btn-round btn-primary">
+                              <i class="material-icons">attach_file</i>
+                            </button>
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div class="form-group col-12">
@@ -161,7 +165,6 @@ if ($this->session->flashdata('petugas')) {
                         <option value="" selected disabled>--pilih--</option>
                         <?php foreach ($kategori as $row) : ?>
                           <option value="<?= $row['id_kategori'] ?>"><?= $row['kategori']; ?></option>
-
                         <?php endforeach; ?>
                       </select>
                     </div>
@@ -217,6 +220,38 @@ if ($this->session->flashdata('petugas')) {
                         <div class="form-group">
                           <label class="bmd-label-floating" name="isi_pengetahuan">Isi pengetahuan</label>
                           <textarea name="isi_pengetahuan" id="isi_pengetahuan" cols="30" rows="5" class="form-control"><?= $value['isi_pengetahuan'] ?></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group col-12">
+                        <label for="id_kategori">Kategori</label>
+                        <select name="id_kategori" id="id_kategori" class="form-control" required>
+                          <option value="" selected disabled>--pilih--</option>
+                          <?php foreach ($kategori as $row) : ?>
+                            <?php if ($row['id_kategori'] == $value['id_kategori']) { ?>
+                              <option value="<?= $row['id_kategori'] ?>" selected><?= $row['kategori']; ?></option>
+                            <?php } else { ?>
+                              <option value="<?= $row['id_kategori'] ?>"><?= $row['kategori']; ?></option>
+                            <?php } ?>
+                          <?php endforeach; ?>
+                        </select>
+                      </div>
+                      <label>Foto</label>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <img src="<?= base_url('assets/img/pengetahuan/') . $value['foto']; ?>" class="img-thumbnail">
+                        </div>
+                        <div class="col-sm-9">
+                          <div class="form-group form-file-upload form-file-multiple">
+                            <input type="file" name="foto" multiple="" class="inputFileHidden">
+                            <div class="input-group">
+                              <input type="text" class="form-control inputFileVisible" placeholder="Single File">
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-fab btn-round btn-primary">
+                                  <i class="material-icons">attach_file</i>
+                                </button>
+                              </span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

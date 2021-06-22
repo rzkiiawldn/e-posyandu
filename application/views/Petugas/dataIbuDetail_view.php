@@ -81,7 +81,14 @@
                                     <td><?= $i; ?></td>
                                     <td><?= $value['nik'] ?></td>
                                     <td><?= $value['nama'] ?></td>
-                                    <td><?= $value['tanggal_lahir'] ?></td>
+                                    <td><?php
+                                            $birthDate = new DateTime($value['tanggal_lahir']);
+                                            $today = new DateTime("today");
+                                            $y = $today->diff($birthDate)->y;
+                                            $m = $today->diff($birthDate)->m;
+                                            $d = $today->diff($birthDate)->d;
+                                            echo $y . " tahun " . $m . " bulan ";
+                                            ?></td>
                                     <td><?= $value['anak_ke'] ?></td>
                                     <td>
                                         <!-- <?php $nik = base64_encode($value['nik']) ?> -->

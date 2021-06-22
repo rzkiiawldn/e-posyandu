@@ -13,7 +13,7 @@
       <?php foreach ($pengetahuan as $row) : ?>
         <div class="col-lg-4 my-5">
           <div class="card shadow" style="width: 18rem;">
-            <img src="<?= base_url('assets/img/pengetahuan/' . $row['foto']) ?>" class="card-img-top" alt="...">
+            <img src="<?= base_url('assets/img/pengetahuan/' . $row['foto']) ?>" class="card-img-top" alt="..." style="height: 12rem;">
             <div class="card-body">
               <h5 class="card-title"><?= $row['judul']; ?></h5>
               <p class="card-text"><?= substr($row['isi_pengetahuan'], 0, 100); ?>.</p>

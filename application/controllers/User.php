@@ -28,6 +28,35 @@ class User extends CI_Controller
         $this->load->view('User/template/footer');
     }
 
+    public function tambah_kegiatan()
+    {
+        $foto = $_FILES['foto'];
+        if ($foto = '') {
+        } else {
+            $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
+            $config['max_size']         = '2048';
+            $config['upload_path']      = './assets/kegiatan/';
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('foto')) {
+                $foto   = $this->upload->data('file_name');
+            } else {
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Tambah foto gagal, silahkan cek file yang anda masukan</div>');
+                redirect('user/kegiatanView');
+            }
+        }
+        $data = [
+            'kode_posyandu'         => $this->input->post('kode_posyandu'),
+            'kegiatan'              => $this->input->post('kegiatan'),
+            'isi_kegiatan'          => $this->input->post('isi_kegiatan'),
+            'waktu'                 => $this->input->post('waktu'),
+            'foto'                  => $foto
+        ];
+
+        $this->db->insert('datakegiatan', $data);
+        $this->session->set_flashdata('user', 'Success as a petugas.');
+        redirect('user/kegiatanView');
+    }
+
     public function profil()
     {
 
@@ -87,7 +116,7 @@ class User extends CI_Controller
     {
         $data['user'] = $this->db->get_where('dataAnak', ['nik' => $this->session->userdata('nik')])->row_array();
         $data['posyandu'] = $this->db->get_where('dataposyandu', ['kode_posyandu' => $data['user']['kode_posyandu']])->row_array();
-        $data['artikel'] = $this->db->get('artikel')->result_array();
+        $data['artikel'] = $this->db->query("SELECT * FROM artikel ORDER BY id_artikel DESC")->result_array();
         $this->load->view('User/template/header', $data);
         $this->load->view('User/artikelView');
         $this->load->view('User/template/footer');
@@ -111,7 +140,7 @@ class User extends CI_Controller
     {
         $data['user'] = $this->db->get_where('dataAnak', ['nik' => $this->session->userdata('nik')])->row_array();
         $data['posyandu'] = $this->db->get_where('dataposyandu', ['kode_posyandu' => $data['user']['kode_posyandu']])->row_array();
-        $data['pengetahuan'] = $this->db->get('pengetahuan')->result_array();
+        $data['pengetahuan'] = $this->db->query("SELECT * FROM pengetahuan ORDER BY id_pengetahuan DESC ")->result_array();
         $data['kategori'] = $this->db->get('pengetahuan_kategori')->result_array();
         $this->load->view('User/template/header', $data);
         $this->load->view('User/pengetahuanView');
@@ -141,8 +170,9 @@ class User extends CI_Controller
     public function kegiatanPosyandu()
     {
         $data['user'] = $this->db->get_where('dataAnak', ['nik' => $this->session->userdata('nik')])->row_array();
+        $kode = $data['user']['kode_posyandu'];
         $data['posyandu'] = $this->db->get_where('dataposyandu', ['kode_posyandu' => $data['user']['kode_posyandu']])->row_array();
-        $data['kegiatan'] = $this->db->get_where('datakegiatan', ['kode_posyandu' => $data['user']['kode_posyandu']])->result_array();
+        $data['kegiatan'] = $this->db->query(" SELECT * FROM datakegiatan WHERE kode_posyandu = '$kode' ORDER BY id_kegiatan DESC")->result_array();
         $this->load->view('User/template/header', $data);
         $this->load->view('User/kegiatanView');
         $this->load->view('User/template/footer');

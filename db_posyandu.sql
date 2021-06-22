@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2021 at 02:22 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.3.15
+-- Waktu pembuatan: 22 Jun 2021 pada 11.00
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.3.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artikel`
+-- Struktur dari tabel `artikel`
 --
 
 CREATE TABLE `artikel` (
@@ -39,21 +39,20 @@ CREATE TABLE `artikel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `artikel`
+-- Dumping data untuk tabel `artikel`
 --
 
 INSERT INTO `artikel` (`id_artikel`, `judul`, `isi_artikel`, `view`, `foto`, `created_by`, `created_date`) VALUES
-(11, 'nn', 'b', 2, 'default.jpg', 'Dahlia1', '2021-06-18'),
-(12, 'a', 'kj', 17, 'default.jpg', 'Dahlia1', '2021-06-18'),
-(13, 'aa', 'a', 1, 'default.jpg', 'Dahlia1', '2021-06-18'),
-(14, 'aa', 'a', 2, 'default.jpg', 'Dahlia1', '2021-06-18'),
-(15, 'aa', 'a', 0, 'default.jpg', 'Dahlia1', '2021-06-18'),
-(16, 'aa', 'aa', 0, 'default.jpg', 'Dahlia1', '2021-06-18');
+(19, 'Tumbuh Kembang Anak', 'Mendidik anak untuk belajar berbagi adalah hal yang susah-susah gampang. Pada usia balita biasanya anak mengalami fase egosentris yakni fase dimana anak masih berpusat pada dirinya sendiri. Tak heran jika si kecil enggan meminjamkan barangnya pada orang lain, bahkan si kecil juga senang merebut barang milik temannya. Untuk membantu si kecil belajar berbagi seiring mereka besar nanti, ada beberapa hal yang perlu Moms dan Dads perhatikan', 1, 'artikel.jpg', 'Dahlia1', '2021-06-22'),
+(20, 'Semakin Besar Usia Anak, Semakin Besar Kebutuhan Gizinya', 'Semakin Besar Usia Anak, Semakin Besar Kebutuhan Gizinya</u></h5>\r\n                                <div class=\"mt-4\" style=\"text-align:justify;\">\r\n                                    <p>Memasuki usia Toddler (1-3 tahun), Si Buah Hati mulai aktif bermain dan bereksplorasi di lingkungan sekitarnya. Selain itu, masa tumbuh kembangnya juga mengalami peningkatan yang pesat. Gizi anak yang tercukupi adalah salah satu kunci untuk mendukung optimalnya proses perkembangan ini. Organisasi Kesehatan Dunia (WHO) menyarankan agar Bunda memenuhi kebutuhan gizi Si Buah Hati, terutama pada dua tahun pertamanya. Ini karena segala perkembangan yang terjadi di usia ini tidak dapat diulang kembali. Untuk itu, Bunda diharapkan dapat mengajarkan Si Buah Hati pentingnya menerapkan pola makan sehat sejak dini', 1, 'artikel2.jpg', 'Dahlia1', '2021-06-22'),
+(21, 'Tahap Pertumbuhan Anak 0-3 Tahun', '<p>Tanpa terasa, selama sembilan bulan mengandung, akhirnya si kecil bisa lahir dengan sehat ke dunia, ya bun. Dalam artikel ini, theAsianparent akan membahas mengenai tahap pertumbuhan anak usia 0-3 bulan. Pertumbuhan si kecil memang perlu dipantau, Bun. Jika ada masalah pada tumbuh kembanganya, maka jangan ragu untuk berkonsultasi ke dokter ya, Bun.</p>\r\n                                    ', 1, 'artikel3.jpg', 'Dahlia1', '2021-06-22'),
+(22, 'Moms dan Dads, Begini Cara Menanamkan Empati pada Anak Usia Dini', 'Mengajarkan rasa empati pada anak sangat penting untuk dilakukan sejak dini. Selain untuk mendukung tumbuh kembang emosionalnya, rasa empati juga berguna untuk menjaga hubungan sosial anak dengan teman-temannya. Tapi mengajarkan rasa empati pada anak usia dini memang susah-susah gampang. Moms dan Dads perlu mengetahui triknya agar rasa empati anak dapat tumbuh tanpa paksaan. Berikut ini adalah tips menanamkan rasa empati pada anak usia dini yang bisa Moms dan Dads lakukan.\r\n\r\n \r\n\r\nDengan Hal Sederhana\r\n\r\nSikap empati hakekatnya adalah ketika anak bisa merasakan apa yang dirasakan oleh orang lain. Penanaman sikap ini sangat penting agar si kecil dapat memahami konsekuensi dari apapun perbuatan yang dilakukannya kepada orang lain. Bagi anak, sikap empati adalah sesuatu yang abstrak. Dia akan bingung memahami sikap ini jika Moms dan Dads tidak memberikan sebuah contoh yang nyata untuk dia pahami. Karena itu, coba ajarkan si kecil makna dari sikap empati melalui hal sederhana.\r\n\r\n \r\n\r\nSaat si kecil merebut mainan temannya, coba ajak si kecil memikirkan perasaan sedih dan kecewa dari temannya tersebut. Kemudian, minta si kecil membayangkan apabila mainannya yang direbut, tentu si kecil akan merasa sedih dan kecewa juga. Dengan memahami apa yang dirasakan oleh orang lain karena perbuatannya, si kecil akan lebih hati-hati dan memiliki empati ketika bersikap pada temannya.\r\n\r\n \r\n\r\nMelalui Mainan Edukasi\r\n\r\nMoms dan Dads bisa memberikan program edukasi yang memiliki kurikulum yang sesuai dengan usia dan tingkat perkembangannya. Program edukasi Kodomo Challenge meningkatkan rasa empati anak dengan bermain set Peralatan Bayi Hana. Selain itu orangtua dapat mengajarkan makna empati lebih mudah dengan Buku Bergambar dan Video Edukasi. Dengan tampilan visual yang menarik, membuat anak lebih mudah memahami dan mengerti.\r\n\r\n \r\n\r\nBelajar Empati Melalui Dongeng\r\n\r\nSalah satu cara yang bisa Moms dan Dads lakukan untuk menanamkan sikap empati pada anak usia dini adalah dengan melalui dongeng. Moms dan Dads dapat membacakan dongeng dengan kisah-kisah yang mengajarkan tentang kepedulian tokoh utama terhadap keluarga, teman-teman, atau bahkan orang asing yang tidak dikenalnya.\r\n\r\n \r\n\r\nAjarkan pada si kecil jika sikap empati yang ditunjukkan oleh tokoh utama ini pada akhirnya akan mendatangkan kebaikan untuk diri sendiri dan lingkungannya. Dengan memberikan contoh dari buku cerita kesukaannya, si kecil akan lebih mudah memahami makna empati dan bagaimana sikap ini bisa memberikan kebaikan untuk kehidupannya.\r\n\r\n \r\n\r\nMerawat Binatang Peliharaan\r\n\r\nMerawat binatang peliharaan juga bisa menjadi salah satu cara mengajarkan sikap empati pada anak. Bahkan dengan memelihara binatang peliharaan, si kecil juga akan terbiasa memiliki rasa tanggung jawab. Banyak penelitian yang menunjukkan jika anak yang terbiasa bermain dengan binatang peliharaan sejak kecil akan tumbuh menjadi pribadi yang lebih lembut dan peduli dengan orang-orang di sekitarnya.\r\n\r\n \r\n\r\nSebagai langkah awal, Moms dan Dads bisa memilihkan binatang peliharaan yang cenderung lebih mudah untuk dirawat seperti ikan atau kura-kura. Jika Moms dan Dads menilai si kecil sudah bisa lebih bertanggungjawab dengan binatang peliharaannya, Moms dan Dads bisa memberi si kecil binatang peliharaan baru seperti kucing atau anjing.\r\n\r\n \r\n\r\nSaat memelihara binatang peliharaan, ajarkan si kecil untuk bersikap lembut saat memegang binatang tersebut. Jangan lupa untuk selalu mengingatkan si kecil memberi makan dan merawat kebersihan binatang peliharaannya agar mereka bisa terus bermain bersama.\r\n\r\n \r\n\r\nMengajak Anak Bersosialisasi\r\n\r\nMoms dan Dads mungkin bisa melihat si kecil memiliki sikap empati pada orang-orang di rumah. Tapi apakah sikap empati itu akan tetap ada ketika ia dihadapkan pada lingkungan baru? Untuk menanamkan sikap empati pada anak usia dini, Moms dan Dads juga perlu mengajaknya untuk bersosialisasi dengan teman-teman seumurannya.\r\n\r\n \r\n\r\nAjak si kecil bermain di playground dan bertemu dengan teman-teman baru. Di sini, si kecil akan belajar untuk menekan sikap egoisnya dan berbagi dengan anak-anak lain. Biasakan juga agar si kecil tidak malu mengucapkan kata maaf, terima kasih, dan tolong kepada orang lain saat ia berada di tempat umum.\r\n\r\n \r\n\r\nItu tadi beberapa hal yang bisa Moms dan Dads lakukan untuk mengajarkan empati pada anak usia dini. Mengajarkan empati memang tidak bisa dilakukan secara instan. Moms dan Dads perlu melakukannya secara konsisten dan menjadi contoh nyata bagi anak. Dengan memiliki sikap empati, si kecil akan lebih mudah bersosialisasi serta mengatur emosi dirinya saat ia tumbuh besar nantinya.', 1, 'artikel5.jpg', 'Dahlia1', '2021-06-22'),
+(23, 'Hal penting untuk diketahui sebelum mengajak bayi berenang', 'Berenang memiliki banyak manfaat bagi tubuh. Bukan hanya bagi orang dewasa, berenang ternyata juga baik untuk bayi. Saat mendampingi bayi renang, akan ada interaksi yang intens antara si kecil dengan Moms dan Dads. Hal ini bisa meningkatkan kedekatan antara bayi dan orang tuanya.\r\n\r\nSelain itu, gerakan tangan dan kaki yang secara reflek dilakukan saat bayi renang di dalam air bisa merangsang perkembangan otot dan melatih kemampuan motoriknya. Mengajarkan si kecil berenang juga bisa meningkatkan rasa kepercayaan dirinya. Ketika bayi bisa beradaptasi di kolam hal ini akan membantu Si kecil untuk terbiasa berada di lingkungan baru dan bertemu dengan orang lain sehingga tidak akan kaget ketika suatu hari diajak bepergian ke tempat yang asing baginya.\r\n\r\nMeskipun banyak manfaatnya, tapi mengajak bayi renang tidak boleh dilakukan dengan sembarangan. Ada beberapa hal yang perlu Moms dan Dads perhatikan saat akan mengajak bayi renang, apa saja?\r\n\r\n \r\n\r\nKonsultasikan dengan Dokter Anak\r\nSetiap bayi memiliki daya tahan tubuh yang berbeda-beda. Meskipun saat berada di dalam kandungan si kecil sudah biasa \"berenang\" di air ketuban, namun kondisi air kolam renang tentunya sangat berbeda. Suhu air kolam renang yang dingin, kandungan kaporit dan kondisi kolam yang kotor berpotensi menimbulkan gangguan pada kulit dan kesehatan bayi.\r\n\r\nAgar Moms dan Dads tidak khawatir, sebaiknya lakukan konsultasi pada dokter anak saat pertama kali mengajak bayi renang. Konsultasi ini diperlukan untuk memastikan si kecil dalam kondisi sehat dan tidak alergi pada kandungan yang mungkin ada dalam air kolam renang.\r\n\r\n \r\n\r\nPilih Kolam Renang yang Tepat\r\nPemilihan kolam renang juga jadi hal yang sangat penting untuk diperhatikan sebelum mengajak bayi renang. Agar lebih kondusif, pilih kolam renang yang tidak terlalu ramai. Hindari waktu dimana kolam renang akan sering dikunjungi, seperti di hari libur. Kondisi kolam renang yang terlalu ramai bisa membuat fokus si kecil jadi terpecah. Selain itu, banyaknya pengunjung kolam renang juga akan membatasi ruang gerak Moms dan Dads ketika berenang dengan si kecil.\r\n\r\nJika memungkinkan, Moms dan Dads bisa memilih kolam renang yang punya air hangat dengan suhu sekitar 32 derajat celcius. Tapi jika hal ini tidak memungkinkan, jangan lupa untuk menyiapkan tubuh si kecil terlebih dahulu sebelum masuk ke dalam kolam renang yang dingin, yakni dengan membasuh atau menciprati tubuh anak dengan air keran.\r\n\r\n \r\n\r\nBuat Suasana Rileks dan Menyenangkan\r\nBermain di kolam renang yang luas merupakan hal baru yang akan mengagetkan bagi si kecil. Hal ini bisa membuat bayi jadi takut dan akhirnya menangis saat tubuhnya dimasukkan ke kolam renang. Supaya si kecil menganggap berenang bukanlah kegiatan yang menakutkan, Moms dan Dads perlu membuat kondisi jadi lebih rileks dan menyenangkan. Selalu ajak si kecil untuk berbicara, menyanyi, hingga tertawa saat berada di dalam air. Selain itu, bawa pula mainan-mainan yang bisa mengapung sebagai media hiburan saat bayi renang. Ingat, bahwa tujuan mengajak bayi renang adalah meningkatkan ikatan antara orang tua dan bayi, oleh karena itu “pelampung” yang paling aman bagi bayi adalah tubuh orang tuanya. Moms dan dads perlu untuk terus berada di sekitar bayi untuk memegang, memeluk, dan memberikan rasa aman ketika bayi renang.\r\n\r\n \r\n\r\nPerhatikan Reaksi Tubuh Bayi\r\nMengajak bayi renang bukanlah sebuah pertandingan. Moms dan Dads tidak perlu memaksa si kecil berenang hanya karena tidak ingin kalah dengan anak lain. Jika si kecil belum siap, sebaiknya tunda beberapa bulan hingga anak benar-benar siap.\r\n\r\nMoms dan Dads perlu memperhatikan kondisi tubuh bayi ketika berada di kolam renang untuk mengetahui apakah si kecil sudah benar-benar siap di ajak berenang. Jika ketika bayi renang menunjukkan gejala seperti menggigil, jangan paksakan untuk membiarkan si kecil lebih lama berada di kolam renang. Selain itu, perhatikan juga warna tangan dan bibir anak. Jika tangan dan bibirnya mulai tampak membiru, segera keluar dari kolam dan hangatkan tubuh bayi.\r\n\r\n \r\n\r\nBerikan Treatment Khusus Setelah Selesai Berenang\r\nAgar si kecil tidak kedinginan setelah selesai berenang, Moms dan Dads perlu memberikan perlakuan khusus. Balut tubuh si kecil dengan handuk segera setelah keluar dari kolam renang. Saat memandikannya, gunakan air hangat agar anak tidak menggigil. Setelah itu, jangan lupa untuk berikan ASI atau susu hangat setelahnya untuk mencegah si kecil jadi kembung.\r\n\r\nItu tadi manfaat dan tips bayi renang yang perlu Moms dan Dads ketahui. Dengan mengetahui manfaat dan tips mengajak bayi renang secara tepat, Moms dan Dads tak perlu lagi khawatir untuk mulai mengajarkan keahlian berenang pada anak sejak kecil', 0, 'artijel4.jpg', 'Dahlia1', '2021-06-22');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataakun`
+-- Struktur dari tabel `dataakun`
 --
 
 CREATE TABLE `dataakun` (
@@ -75,7 +74,7 @@ CREATE TABLE `dataakun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dataakun`
+-- Dumping data untuk tabel `dataakun`
 --
 
 INSERT INTO `dataakun` (`id_akun`, `nik`, `nama`, `email`, `kode_posyandu`, `password`, `alamat`, `no_telepon`, `jabatan`, `role`, `pendidikan_terakhir`, `tempat_lahir`, `tanggal_lahir`, `image`, `created_at`) VALUES
@@ -86,7 +85,7 @@ INSERT INTO `dataakun` (`id_akun`, `nik`, `nama`, `email`, `kode_posyandu`, `pas
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataanak`
+-- Struktur dari tabel `dataanak`
 --
 
 CREATE TABLE `dataanak` (
@@ -108,7 +107,7 @@ CREATE TABLE `dataanak` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dataanak`
+-- Dumping data untuk tabel `dataanak`
 --
 
 INSERT INTO `dataanak` (`nik`, `kode_posyandu`, `id_kms`, `nama`, `password`, `tempat_lahir`, `tanggal_lahir`, `jk`, `golongan_darah`, `alamat`, `anak_ke`, `nik_wali`, `nama_wali`, `status`, `created_at`) VALUES
@@ -121,7 +120,7 @@ INSERT INTO `dataanak` (`nik`, `kode_posyandu`, `id_kms`, `nama`, `password`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataibu`
+-- Struktur dari tabel `dataibu`
 --
 
 CREATE TABLE `dataibu` (
@@ -137,7 +136,7 @@ CREATE TABLE `dataibu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dataibu`
+-- Dumping data untuk tabel `dataibu`
 --
 
 INSERT INTO `dataibu` (`nik`, `kode_posyandu`, `nama`, `tempat_lahir`, `tanggal_lahir`, `golongan_darah`, `alamat`, `no_telepon`, `created_at`) VALUES
@@ -149,7 +148,7 @@ INSERT INTO `dataibu` (`nik`, `kode_posyandu`, `nama`, `tempat_lahir`, `tanggal_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataimunisasi`
+-- Struktur dari tabel `dataimunisasi`
 --
 
 CREATE TABLE `dataimunisasi` (
@@ -165,7 +164,7 @@ CREATE TABLE `dataimunisasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dataimunisasi`
+-- Dumping data untuk tabel `dataimunisasi`
 --
 
 INSERT INTO `dataimunisasi` (`id_imunisasi`, `nik`, `kode_posyandu`, `nama`, `tanggal_lahir`, `tanggal_imunisasi`, `bulan`, `jenis_imunisasi`, `status`) VALUES
@@ -192,7 +191,7 @@ INSERT INTO `dataimunisasi` (`id_imunisasi`, `nik`, `kode_posyandu`, `nama`, `ta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datakegiatan`
+-- Struktur dari tabel `datakegiatan`
 --
 
 CREATE TABLE `datakegiatan` (
@@ -205,19 +204,18 @@ CREATE TABLE `datakegiatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `datakegiatan`
+-- Dumping data untuk tabel `datakegiatan`
 --
 
 INSERT INTO `datakegiatan` (`id_kegiatan`, `kode_posyandu`, `kegiatan`, `isi_kegiatan`, `waktu`, `foto`) VALUES
-(1, 'Dahlia1', 'aa', 'aaasa', '2021-12-31', 'nanti aja'),
-(2, 'Dahlia1', 'aa', 'a', '2021-02-01', 'default.jpg'),
-(3, 'Dahlia1', 'aa', 'a', '2021-06-18', 'default.jpg'),
-(4, 'Dahlia1', 'a', 'a', '2021-06-18', 'default.jpg');
+(12, 'Dahlia1', ' Program kesehatan ibu hamil', 'Pelayanan yang diberikan posyandu kepada ibu hamil mencakup pemeriksaan kehamilan dan pemantauan gizi. Tak hanya pemeriksaan, ibu hamil juga dapat melakukan konsultasi terkait persiapan persalinan dan pemberian ASI.  Agar kondisi kehamilan tetap terjaga, ibu hamil juga bisa mendapatkan vaksin TT untuk mencegah penyakit tetanus yang masih umum terjadi di negara berkembang, seperti Indonesia.  Setelah melahirkan, ibu juga bisa mendapatkan suplemen vitamin A, vitamin B, dan zat besi yang baik dikonsumsi selama masa menyusui, serta pemasangan alat kontrasepsi (KB) di posyandu.', '2021-06-15', 'hamil.jpg'),
+(13, 'Dahlia1', 'Program kesehatan anak', 'Salah satu program utama posyandu adalah menyelenggarakan pemeriksaan bayi dan balita secara rutin. Hal ini penting dilakukan untuk memantau tumbuh kembang anak dan mendeteksi sejak dini bila anak mengalami gangguan tumbuh kembang.  Jenis pelayanan yang diselenggarakan posyandu untuk balita mencakup penimbangan berat badan, pengukuran tinggi badan dan lingkar kepala anak, evaluasi tumbuh kembang, serta penyuluhan dan konseling tumbuh kembang. Hasil pemeriksaan tersebut kemudian dicatat di dalam buku KIA atau KMS.', '2021-06-04', 'download.jpg'),
+(14, 'Dahlia1', ' Imunisasi', 'Imunisasi wajib merupakan salah satu program pemerintah yang mengharuskan setiap anak usia di bawah 1 tahun untuk melakukan vaksinasi. Kementerian Kesehatan Republik Indonesia telah menetapkan ada 5 jenis imunisasi yang wajib diberikan, yaitu imunisasi hepatitis B, polio, BCG, campak, dan DPT-HB-HiB.  Dalam hal ini, posyandu menjadi salah satu pihak yang berhak menyelenggarakan program imunisasi tersebut. Tak hanya anak, ibu hamil pun juga dapat melakukan vaksinasi di posyandu, misalnya vaksinasi tetanus, hepatitis, dan pneumokokus.', '2021-06-25', 'download_(1).jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datakms`
+-- Struktur dari tabel `datakms`
 --
 
 CREATE TABLE `datakms` (
@@ -235,7 +233,7 @@ CREATE TABLE `datakms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `datakms`
+-- Dumping data untuk tabel `datakms`
 --
 
 INSERT INTO `datakms` (`id_pa`, `id_kms`, `kode_posyandu`, `jk`, `tanggal_periksa`, `bulan`, `tahun`, `tinggi_badan`, `berat_badan`, `umur`, `status_gizi`) VALUES
@@ -252,7 +250,7 @@ INSERT INTO `datakms` (`id_pa`, `id_kms`, `kode_posyandu`, `jk`, `tanggal_periks
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataposyandu`
+-- Struktur dari tabel `dataposyandu`
 --
 
 CREATE TABLE `dataposyandu` (
@@ -269,7 +267,7 @@ CREATE TABLE `dataposyandu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dataposyandu`
+-- Dumping data untuk tabel `dataposyandu`
 --
 
 INSERT INTO `dataposyandu` (`id_posyandu`, `nama_posyandu`, `kode_posyandu`, `alamat`, `jumlah_kader`, `jumlah_wus`, `keterangan`, `lng`, `lat`, `created_date`) VALUES
@@ -279,29 +277,29 @@ INSERT INTO `dataposyandu` (`id_posyandu`, `nama_posyandu`, `kode_posyandu`, `al
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jadwal_posyandu`
+-- Struktur dari tabel `jadwal_posyandu`
 --
 
 CREATE TABLE `jadwal_posyandu` (
   `id_jadwal` int(11) NOT NULL,
   `kode_posyandu` varchar(225) NOT NULL,
-  `hari` varchar(225) NOT NULL,
+  `hari` date NOT NULL,
   `jam_buka` time NOT NULL,
   `jam_tutup` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `jadwal_posyandu`
+-- Dumping data untuk tabel `jadwal_posyandu`
 --
 
 INSERT INTO `jadwal_posyandu` (`id_jadwal`, `kode_posyandu`, `hari`, `jam_buka`, `jam_tutup`) VALUES
-(1, 'Dahlia1', 'Kamis', '09:00:00', '14:00:00'),
-(2, 'Dahlia1', 'Senin', '08:00:00', '15:00:00');
+(1, 'Dahlia1', '2021-06-08', '09:00:00', '14:00:00'),
+(2, 'Dahlia1', '2021-06-21', '08:00:00', '15:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengetahuan`
+-- Struktur dari tabel `pengetahuan`
 --
 
 CREATE TABLE `pengetahuan` (
@@ -315,16 +313,19 @@ CREATE TABLE `pengetahuan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengetahuan`
+-- Dumping data untuk tabel `pengetahuan`
 --
 
 INSERT INTO `pengetahuan` (`id_pengetahuan`, `judul`, `isi_pengetahuan`, `id_kategori`, `foto`, `kode_posyandu`, `created_date`) VALUES
-(1, 'aa', 'a', 3, 'default.jpg', 'Dahlia1', '2021-06-18');
+(3, 'APA SIH MANFAAT DAN TUJUAN DARI IMUNISAI?', '<h5 class=\"card-title\">Imunisasi pada anak memiliki manfaat penting untuk melindungi dan mencegah terhadap penyakit-penyakit menular yang sangat berbahaya bagi anak</h5>\r\n                                ', 2, 'icon15.png', 'Dahlia1', '2021-06-22'),
+(4, 'PERAWATAN SEHARI-HARI ANAK', '<h4>Kebersihan Anak</h4>\r\n- Mandikan dengan sabun 2x sehari\r\n- Keramaskan anak dengan sampo 3x seminggu\r\n- Cuci tangan anak dengan sabun sebelum makan, setelah buang air besar, baung air kecil, dan setelah bermain\r\n  -Jagalah kebersihan telinga anak\r\n  - Gunting kuku tangan dan kaki anak ketika sudah terlihat panjang\r\n- Ajarkan buang air besar dan kecil di WC\r\n- Jagalah kebersihan pakaian, mainan, dan tempat tidur anak\r\n- Jagalah kebersihan perlengkapan makan dan minum anak', 4, 'icon17.png', 'Dahlia1', '2021-06-22'),
+(5, 'Tanda Bayi Sehat', 'Tanda Bayi Sehat\r\n- Ketika lahir langsung menangis\r\n- Warna tubuh bayi ketika lahir kemerahan\r\n- Bayi bergerak dengan aktif\r\n- Berat badan bayi ketika lahir 2.500 sampai 4.000 gram', 3, 'icon1.png', 'Dahlia1', '2021-06-22'),
+(6, 'Tindakan Untuk Bayi Baru Lahir', 'Tindakan Untuk Bayi Baru Lahir\r\n\r\n- Jagalah kebersihan selama persalinan\r\n- Cegah infeksi kuman pada bayi. Setelah bayi lahir, mintalah salep antibiotik untuk matanya\r\n- Jaga tali pusat agar selalu bersih, kering, dan biarkan terbuka (jangan dibungkus)\r\n- Jangan berikan ramuan apapun pada tali pusat. Jika kotor, bersihkan dengan kain bersih dan air matang\r\n- Mintalah suntikan vitamin K1 untuk mencegah pendarahan pada bayi\r\n- Selalu memastikan bayi sudah buang air besar\r\n- Mintalah imunisasi hepatitis B sebelum bayi berumur 24 jam', 3, 'icon2.png', 'Dahlia1', '2021-06-22');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengetahuan_kategori`
+-- Struktur dari tabel `pengetahuan_kategori`
 --
 
 CREATE TABLE `pengetahuan_kategori` (
@@ -333,138 +334,138 @@ CREATE TABLE `pengetahuan_kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengetahuan_kategori`
+-- Dumping data untuk tabel `pengetahuan_kategori`
 --
 
 INSERT INTO `pengetahuan_kategori` (`id_kategori`, `kategori`) VALUES
-(2, 'imunisasi'),
-(3, 'baru'),
-(4, 'ini juga baru');
+(2, 'Pendidikan Stimulasi'),
+(3, 'Pengetahuan Seputar Anak'),
+(4, 'Perawatan Sehari-hari Anak');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `artikel`
+-- Indeks untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
   ADD PRIMARY KEY (`id_artikel`);
 
 --
--- Indexes for table `dataakun`
+-- Indeks untuk tabel `dataakun`
 --
 ALTER TABLE `dataakun`
   ADD PRIMARY KEY (`id_akun`);
 
 --
--- Indexes for table `dataanak`
+-- Indeks untuk tabel `dataanak`
 --
 ALTER TABLE `dataanak`
   ADD PRIMARY KEY (`nik`);
 
 --
--- Indexes for table `dataibu`
+-- Indeks untuk tabel `dataibu`
 --
 ALTER TABLE `dataibu`
   ADD PRIMARY KEY (`nik`);
 
 --
--- Indexes for table `dataimunisasi`
+-- Indeks untuk tabel `dataimunisasi`
 --
 ALTER TABLE `dataimunisasi`
   ADD PRIMARY KEY (`id_imunisasi`);
 
 --
--- Indexes for table `datakegiatan`
+-- Indeks untuk tabel `datakegiatan`
 --
 ALTER TABLE `datakegiatan`
   ADD PRIMARY KEY (`id_kegiatan`);
 
 --
--- Indexes for table `datakms`
+-- Indeks untuk tabel `datakms`
 --
 ALTER TABLE `datakms`
   ADD PRIMARY KEY (`id_pa`);
 
 --
--- Indexes for table `dataposyandu`
+-- Indeks untuk tabel `dataposyandu`
 --
 ALTER TABLE `dataposyandu`
   ADD PRIMARY KEY (`id_posyandu`);
 
 --
--- Indexes for table `jadwal_posyandu`
+-- Indeks untuk tabel `jadwal_posyandu`
 --
 ALTER TABLE `jadwal_posyandu`
   ADD PRIMARY KEY (`id_jadwal`);
 
 --
--- Indexes for table `pengetahuan`
+-- Indeks untuk tabel `pengetahuan`
 --
 ALTER TABLE `pengetahuan`
   ADD PRIMARY KEY (`id_pengetahuan`);
 
 --
--- Indexes for table `pengetahuan_kategori`
+-- Indeks untuk tabel `pengetahuan_kategori`
 --
 ALTER TABLE `pengetahuan_kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `artikel`
+-- AUTO_INCREMENT untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `dataakun`
+-- AUTO_INCREMENT untuk tabel `dataakun`
 --
 ALTER TABLE `dataakun`
   MODIFY `id_akun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `dataimunisasi`
+-- AUTO_INCREMENT untuk tabel `dataimunisasi`
 --
 ALTER TABLE `dataimunisasi`
   MODIFY `id_imunisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `datakegiatan`
+-- AUTO_INCREMENT untuk tabel `datakegiatan`
 --
 ALTER TABLE `datakegiatan`
-  MODIFY `id_kegiatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kegiatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `datakms`
+-- AUTO_INCREMENT untuk tabel `datakms`
 --
 ALTER TABLE `datakms`
   MODIFY `id_pa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `dataposyandu`
+-- AUTO_INCREMENT untuk tabel `dataposyandu`
 --
 ALTER TABLE `dataposyandu`
   MODIFY `id_posyandu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `jadwal_posyandu`
+-- AUTO_INCREMENT untuk tabel `jadwal_posyandu`
 --
 ALTER TABLE `jadwal_posyandu`
   MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `pengetahuan`
+-- AUTO_INCREMENT untuk tabel `pengetahuan`
 --
 ALTER TABLE `pengetahuan`
-  MODIFY `id_pengetahuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pengetahuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `pengetahuan_kategori`
+-- AUTO_INCREMENT untuk tabel `pengetahuan_kategori`
 --
 ALTER TABLE `pengetahuan_kategori`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;

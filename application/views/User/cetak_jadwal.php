@@ -57,7 +57,7 @@
       <?php $no=1; foreach ($jadwal_posyandu as $row): ?>
       <tr>
         <td><?= $no++; ?></td>
-        <td><?= $row['hari']; ?></td>
+        <td><?= format_indo($row['hari']); ?></td>
         <td><?= $row['jam_buka']; ?></td>
         <td><?= $row['jam_tutup']; ?></td>
       </tr>

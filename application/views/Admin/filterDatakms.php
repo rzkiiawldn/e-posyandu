@@ -103,7 +103,7 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">Tambah Data</button>
+                                        <button type="submit" class="btn btn-primary">Filter Data</button>
                                 </form>
                             </div>
                         </div>

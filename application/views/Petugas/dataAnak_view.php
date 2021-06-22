@@ -39,7 +39,7 @@ $perempuan = 'Perempuan';
         </div>
 
     </div>
-    
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -137,39 +137,6 @@ $perempuan = 'Perempuan';
         </div>
     </div>
 </div>
-
-<!-- <script>
-    $(document).ready(function() {
-
-
-        $('#table_id').DataTable({
-
-            dom: 'lBfrtip',
-            buttons: [{
-                    text: 'Print PDF',
-                    extend: 'pdfHtml5',
-                    filename: 'Data Anak',
-                    exportOptions: {
-                        columns: [0, ':visible']
-                    }
-                },
-                {
-                    text: 'Print Excel',
-                    extend: 'excelHtml5',
-                    filename: 'Data Anak',
-                    exportOptions: {
-                        columns: [0, ':visible']
-                    }
-                },
-                'colvis'
-
-            ],
-
-
-        });
-
-    });
-</script> -->
 
 <!-- Modal 1-->
 <div class="modal fade " id="exampleModalCenter" tabindex="-2" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -275,10 +242,10 @@ $perempuan = 'Perempuan';
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" name="tambah">Tambah Data</button>
-                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary" name="tambah">Tambah Data</button>
                                 </div>
                             </form>
                         </div>
@@ -289,7 +256,6 @@ $perempuan = 'Perempuan';
     </div>
 </div>
 
-<script src="<?= base_url() ?>assets/js/plugins/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
 

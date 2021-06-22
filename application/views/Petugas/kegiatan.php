@@ -53,9 +53,9 @@ if ($this->session->flashdata('petugas')) {
                   <tr>
                     <td><?= $i; ?></td>
                     <td><?= $value['kegiatan'] ?></td>
-                    <td><?= $value['isi_kegiatan'] ?></td>
+                    <td><?= substr($value['isi_kegiatan'], 0, 100) ?>...</td>
                     <td><?= $value['waktu'] ?></td>
-                    <td><?= $value['foto'] ?></td>
+                    <td><img src="<?= base_url('assets/img/kegiatan/' . $value['foto']) ?>" class="img" width="100px"></td>
                     <td class>
                       <a class="badge badge-warning btn-lg" href="#" role="button" data-toggle="modal" data-target="#edit<?= $value['id_kegiatan'] ?>">Edit</a>
                       <a class="badge badge-danger btn-lg" href="<?= base_url() ?>petugas/hapus_kegiatan/<?= $value['id_kegiatan']; ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data ?');" class="badge badge-danger" data-popup="tooltip" data-placement="top" title="Hapus Data">Delete</a>
@@ -119,7 +119,7 @@ if ($this->session->flashdata('petugas')) {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="<?= base_url('petugas/tambah_kegiatan') ?>" method="post" enctype="multipart/form-data">
+      <form action="<?= base_url('Petugas/tambah_kegiatan') ?>" method="post" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
@@ -134,19 +134,27 @@ if ($this->session->flashdata('petugas')) {
                 <input type="text" class="form-control" id="isi_kegiatan" name="isi_kegiatan" required="">
               </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <label for="foto">Foto</label>
-            <div class="form-group form-file-upload form-file-simple">
-              <input type="text" class="form-control inputFileVisible" placeholder="Simple chooser..." />
-              <input type="file" name="foto" class="inputFileHidden" />
+            <div class="col-md-6">
+              <label for="foto">Foto</label>
+              <div class="form-group form-file-upload form-file-multiple">
+                <input type="file" name="foto" multiple="" class="inputFileHidden">
+                <div class="input-group">
+                  <input type="text" class="form-control inputFileVisible" placeholder="Single File">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-fab btn-round btn-primary">
+                      <i class="material-icons">attach_file</i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+              <!-- <input type="file" name="foto"> -->
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="waktu">waktu</label>
-              <input type="date" id="waktu" name="waktu" class="form-control">
-              <input type="hidden" id="kode_posyandu" name="kode_posyandu" value="<?= $kode_posyandu ?>" class="form-control">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="waktu">waktu</label>
+                <input type="date" id="waktu" name="waktu" class="form-control">
+                <input type="hidden" id="kode_posyandu" name="kode_posyandu" value="<?= $kode_posyandu ?>" class="form-control">
+              </div>
             </div>
           </div>
         </div>
@@ -199,6 +207,25 @@ if ($this->session->flashdata('petugas')) {
                         <div class="form-group">
                           <label class="bmd-label-floating" name="isi_kegiatan">Isi Kegiatan</label>
                           <textarea name="isi_kegiatan" id="isi_kegiatan" cols="30" rows="5" class="form-control"><?= $value['isi_kegiatan'] ?></textarea>
+                        </div>
+                      </div>
+                      <label>Foto</label>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <img src="<?= base_url('assets/img/kegiatan/') . $value['foto']; ?>" class="img-thumbnail">
+                        </div>
+                        <div class="col-sm-9">
+                          <div class="form-group form-file-upload form-file-multiple">
+                            <input type="file" name="foto" multiple="" class="inputFileHidden">
+                            <div class="input-group">
+                              <input type="text" class="form-control inputFileVisible" placeholder="Single File">
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-fab btn-round btn-primary">
+                                  <i class="material-icons">attach_file</i>
+                                </button>
+                              </span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

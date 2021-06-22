@@ -7,7 +7,7 @@
       <?php foreach ($artikel as $row) : ?>
         <div class="col-lg-4 mb-5">
           <div class="card shadow" style="width: 18rem;">
-            <img src="<?= base_url('assets/img/artikel/' . $row['foto']) ?>" class="card-img-top" alt="...">
+            <img src="<?= base_url('assets/img/artikel/' . $row['foto']) ?>" class="card-img-top" alt="..." style="height: 12rem;">
             <div class="card-body">
               <h5 class="card-title"><?= $row['judul']; ?></h5>
               <p class="card-text"><?= substr($row['isi_artikel'], 0, 100); ?>.</p>

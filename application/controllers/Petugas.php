@@ -326,12 +326,45 @@ class Petugas extends CI_Controller
 
         $getKode = $this->db->get_where('dataakun', ['nik' => $this->session->userdata('nik')])->row_array();
         $spesifik_kode = $getKode['kode_posyandu'];
-
+        $data['tanggal_awal'] = $tanggal_awal;
+        $data['tanggal_akhir'] = $tanggal_akhir;
+        $data['getKategori'] = $getKategori;
+        $data['kode'] = $spesifik_kode;
         $data['dataImunisasi_filtertanggal'] = $this->DataImunisasi->printImunisasi_filtertanggal($tanggal_awal, $tanggal_akhir,  $spesifik_kode, $getKategori);
 
         $this->load->view('Petugas/template/header', $data);
         $this->load->view('Petugas/dataImunisasi_filterbytanggal', $data);
         $this->load->view('Petugas/template/footer');
+    }
+
+    public function cetak_filter()
+    {
+        $tanggal_awal = $this->input->post('tanggal_awal');
+        $tanggal_akhir = $this->input->post('tanggal_akhir');
+        $getKategori = $this->input->post('getKategori');
+        $spesifik_kode = $this->input->post('kode_posyandu');
+
+        $this->load->library('dompdf_gen');
+        $data = [
+            'judul'            => 'Laporan',
+            'gambar'        => FCPATH . 'assets/img/logo22.png',
+            'user'             => $this->db->get_where('dataakun', ['nik' => $this->session->userdata('nik')])->row_array(),
+            'dataposyandu'     => $this->db->get_where('dataposyandu', ['kode_posyandu' => $spesifik_kode])->row_array(),
+            'dataImunisasi_filtertanggal'         => $this->DataImunisasi->printImunisasi_filtertanggal($tanggal_awal, $tanggal_akhir,  $spesifik_kode, $getKategori)
+        ];
+
+        $this->load->view('petugas/laporan/cetak_filter', $data);
+
+        $paper_size         = 'A4';
+        $orientation        = 'landscape';
+        $html               = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        ob_end_clean();
+        $this->dompdf->stream("laporan.pdf", array('Attachment' => 0));
+        $this->session->set_flashdata('petugas', 'Success as a petugas.');
     }
 
     public function getFilterImunisasi2()
@@ -437,28 +470,28 @@ class Petugas extends CI_Controller
 
     public function tambah_artikel()
     {
-        // $foto = $_FILES['foto'];
-        // if ($foto = '') {
-        // } else {
-        //     $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
-        //     $config['max_size']         = '2048';
-        //     $config['upload_path']      = './assets/img/artikel/';
-        //     $this->load->library('upload', $config);
-        //     if ($this->upload->do_upload('foto')) {
-        //         $foto   = $this->upload->data('file_name');
-        //     } else {
-        //         $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Tambah foto gagal, silahkan cek file yang anda masukan</div>');
-        //         $this->session->set_flashdata('petugas', 'Success as a petugas.');
-        //         redirect('petugas/artikel');
-        //     }
-        // }
+
+        $foto = $_FILES['foto'];
+        if ($foto = '') {
+        } else {
+            $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
+            $config['max_size']         = '2048';
+            $config['upload_path']      = './assets/img/artikel/';
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('foto')) {
+                $foto   = $this->upload->data('file_name');
+            } else {
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Tambah foto gagal, silahkan cek file yang anda masukan</div>');
+                redirect('petugas/artikel');
+            }
+        }
 
 
         $data = [
             'judul'             => $this->input->post('judul'),
             'isi_artikel'       => $this->input->post('isi_artikel'),
             'view'              => 0,
-            'foto'              => $this->_uploadImage(),
+            'foto'              => $foto,
             'created_by'        => $this->input->post('created_by'),
             'created_date'      => date('Y-m-d'),
         ];
@@ -468,31 +501,32 @@ class Petugas extends CI_Controller
         redirect('Petugas/artikel');
     }
 
-    private function _uploadImage()
-    {
-        $config['upload_path']          = './assets/img/artikel/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = uniqid();
-        $config['overwrite']            = true;
-        $config['max_size']             = 1024; // 1MB
-        // $config['max_width']            = 1024;
-        // $config['max_height']           = 768;
-
-        $this->load->library('upload', $config);
-
-        if ($this->upload->do_upload('image')) {
-            return $this->upload->data("file_name");
-        }
-
-        return "default.jpg";
-    }
-
     public function edit_artikel()
     {
 
         $id_artikel     = $this->input->post('id_artikel');
         $judul          = $this->input->post('judul');
         $isi_artikel    = $this->input->post('isi_artikel');
+
+        $foto = $_FILES['foto'];
+        if ($foto = '') {
+        } else {
+            $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
+            $config['max_size']         = '2048';
+            $config['upload_path']      = './assets/img/artikel/';
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('foto')) {
+                $foto   = $this->upload->data('file_name');
+                $this->db->set('foto', $foto);
+            } else {
+                $this->db->set('judul', $judul);
+                $this->db->set('isi_artikel', $isi_artikel);
+                $this->db->where('id_artikel', $id_artikel);
+                $this->db->update('artikel');
+                $this->session->set_flashdata('petugas', 'Success as a petugas.');
+                redirect('Petugas/artikel');
+            }
+        }
 
 
         $this->db->set('judul', $judul);
@@ -540,7 +574,8 @@ class Petugas extends CI_Controller
             if ($this->upload->do_upload('foto')) {
                 $foto   = $this->upload->data('file_name');
             } else {
-                $foto = 'default.jpg';
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Tambah foto gagal, silahkan cek file yang anda masukan</div>');
+                redirect('petugas/pengetahuan');
             }
         }
         $data = [
@@ -564,6 +599,27 @@ class Petugas extends CI_Controller
         $judul              = $this->input->post('judul');
         $isi_pengetahuan    = $this->input->post('isi_pengetahuan');
         $id_kategori        = $this->input->post('id_kategori');
+
+        $foto = $_FILES['foto'];
+        if ($foto = '') {
+        } else {
+            $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
+            $config['max_size']         = '2048';
+            $config['upload_path']      = './assets/img/pengetahuan/';
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('foto')) {
+                $foto   = $this->upload->data('file_name');
+                $this->db->set('foto', $foto);
+            } else {
+                $this->db->set('judul', $judul);
+                $this->db->set('isi_pengetahuan', $isi_pengetahuan);
+                $this->db->set('id_kategori', $id_kategori);
+                $this->db->where('id_pengetahuan', $id_pengetahuan);
+                $this->db->update('pengetahuan');
+                $this->session->set_flashdata('petugas', 'Success as a petugas.');
+                redirect('Petugas/pengetahuan');
+            }
+        }
 
 
         $this->db->set('judul', $judul);
@@ -638,27 +694,26 @@ class Petugas extends CI_Controller
         } else {
             $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
             $config['max_size']         = '2048';
-            $config['upload_path']      = './assets/img/artikel/';
+            $config['upload_path']      = './assets/img/kegiatan/';
             $this->load->library('upload', $config);
             if ($this->upload->do_upload('foto')) {
                 $foto   = $this->upload->data('file_name');
             } else {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Tambah foto gagal, silahkan cek file yang anda masukan</div>');
-                $this->session->set_flashdata('petugas', 'Success as a petugas.');
-                die();
+                redirect('petugas/kegiatan');
             }
         }
         $data = [
-            'kode_posyandu'        => $this->input->post('kode_posyandu'),
-            'kegiatan'           => $this->input->post('kegiatan'),
-            'isi_kegiatan'       => $this->input->post('isi_kegiatan'),
-            'waktu'             => $this->input->post('waktu'),
-            'foto'              => $foto,
+            'kode_posyandu'         => $this->input->post('kode_posyandu'),
+            'kegiatan'              => $this->input->post('kegiatan'),
+            'isi_kegiatan'          => $this->input->post('isi_kegiatan'),
+            'waktu'                 => $this->input->post('waktu'),
+            'foto'                  => $foto
         ];
 
         $this->db->insert('datakegiatan', $data);
         $this->session->set_flashdata('petugas', 'Success as a petugas.');
-        redirect('Petugas/kegiatan');
+        redirect('petugas/kegiatan');
     }
 
     public function edit_kegiatan()
@@ -668,6 +723,27 @@ class Petugas extends CI_Controller
         $kegiatan        = $this->input->post('kegiatan');
         $isi_kegiatan    = $this->input->post('isi_kegiatan');
         $waktu           = $this->input->post('waktu');
+
+        $foto = $_FILES['foto'];
+        if ($foto = '') {
+        } else {
+            $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
+            $config['max_size']         = '2048';
+            $config['upload_path']      = './assets/img/kegiatan/';
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('foto')) {
+                $foto   = $this->upload->data('file_name');
+                $this->db->set('foto', $foto);
+            } else {
+                $this->db->set('kegiatan', $kegiatan);
+                $this->db->set('isi_kegiatan', $isi_kegiatan);
+                $this->db->set('waktu', $waktu);
+                $this->db->where('id_kegiatan', $id_kegiatan);
+                $this->db->update('datakegiatan');
+                $this->session->set_flashdata('petugas', 'Success as a petugas.');
+                redirect('Petugas/kegiatan');
+            }
+        }
 
 
         $this->db->set('kegiatan', $kegiatan);

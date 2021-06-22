@@ -345,6 +345,20 @@ class Admin extends CI_Controller
         $this->load->view('Admin/filterDatakms', $data);
         $this->load->view('Admin/template/footer');
     }
+    public function getDataAnak()
+    {
+
+        $getKode = $this->input->post('kode_posyandu');
+        $data['title'] = 'Data Anak';
+        $data['filterAnak'] = $this->db->query("SELECT * FROM dataanak WHERE kode_posyandu = '$getKode'")->result_array();
+        $data['getKodePosyandu'] = $this->db->get('dataposyandu')->result_array();
+        $data['user'] = $this->db->get_where('dataakun', ['nik' => $this->session->userdata('nik')])->row_array();
+        $data['kode'] = $getKode;
+
+        $this->load->view('Admin/template/header', $data);
+        $this->load->view('Admin/filterDataAnak', $data);
+        $this->load->view('Admin/template/footer');
+    }
 
     public function DataLaporan()
     {
@@ -471,6 +485,7 @@ class Admin extends CI_Controller
         $this->load->library('dompdf_gen');
         $data = [
             'judul'            => 'Laporan',
+            'kode' => '',
             'gambar'        => FCPATH . 'assets/img/logo22.png',
             'dataanak'         => $this->db->get('dataanak')->result_array()
         ];
@@ -495,6 +510,7 @@ class Admin extends CI_Controller
         $data = [
             'judul'            => 'Laporan',
             'gambar'        => FCPATH . 'assets/img/logo22.png',
+            'kode'          => $kode,
             'dataanak'         => $this->db->get_where('dataanak', ['kode_posyandu' => $kode])->result_array()
         ];
 

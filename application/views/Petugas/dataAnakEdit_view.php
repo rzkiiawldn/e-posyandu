@@ -18,10 +18,6 @@
                                     <input type="text" class="form-control" value="<?= $value['nik'] ?>" disabled>
                                     <input type="hidden" class="form-control" name="nik" value="<?= $value['nik'] ?>">
                                 </div>
-                                <div class="form-group form-file-upload form-file-simple">
-                                    <input type="text" class="form-control inputFileVisible" placeholder="Simple chooser...">
-                                    <input type="file" class="inputFileHidden">
-                                </div>
                                 <div class="form-group">
                                     <label class="bmd-label-floating" name="nama">Nama</label>
                                     <input type="text" class="form-control" value="<?= $value['nama'] ?>" disabled>

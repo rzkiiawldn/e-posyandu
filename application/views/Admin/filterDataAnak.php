@@ -1,39 +1,16 @@
-<?php
-if ($this->session->flashdata('admin')) {
-    $this->session->set_flashdata('admin', 'Success as a admin.');
-} else {
-    redirect('auth');
-}
-?>
 <div class="content">
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Tambah Data Anak
-    </button> -->
-    <div class="row">
-        <div class="col-3">
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Cetak Data Anak
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" target="_blank" href="<?= base_url('admin/cetak_anak') ?>">Cetak Seluruh Data</a>
-                    <a class="dropdown-item" target="_blank" href="<?= base_url('admin/cetak_anak_lk') ?>">Cetak Anak Laki-laki</a>
-                    <a class="dropdown-item" target="_blank" href="<?= base_url('admin/cetak_anak_pr') ?>">Cetak Anak Perempuan</a>
-                </div>
+    <div class="mt-3">
+        <div class="row">
+            <div class="col-3">
+                
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Filter Data Anak
+        </button>
             </div>
-        </div>
-        <div class="col">
-            <div class="dropdown">
-                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter">
-                    Filter Data Anak
-                </button>
+            <div class="col">
+                <a href="<?= base_url('admin/cetakAnak/'. $kode) ?>" target="_blank" class="btn btn-primary">Cetak Data Anak</a>
             </div>
-        </div>
-        <div class="col-2">
-            <span class="btn btn-primary float-right">Laki-laki : <?= $data_lk; ?></span>
-        </div>
-        <div class="col-2">
-            <span class="btn btn-primary float-right">Perempuan : <?= $data_pr; ?></span>
+
         </div>
     </div>
     <div class="row">
@@ -43,17 +20,8 @@ if ($this->session->flashdata('admin')) {
                     <h4 class="card-title">Data Anak</h4>
                     <p class="card-category">Data Anak</p>
                 </div>
-
                 <div class="card-body">
                     <div class="table-responsive">
-                        <?php if ($this->session->flashdata('error_tambah')) :  ?>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Error!</strong> Data gagal ditambahkan karena nik sudah dipakai.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        <?php endif; ?>
                         <table class="table" id="table_id">
                             <thead class=" text-primary">
                                 <th>
@@ -89,9 +57,9 @@ if ($this->session->flashdata('admin')) {
                             </thead>
                             <tbody>
                                 <?php $i = 1;
-                                foreach ($dataAnak as $value) : ?>
+                                foreach ($filterAnak as $value) : ?>
                                     <tr>
-                                        <td><?= $i; ?></td>
+                                        <td><?= $i ?></td>
                                         <td><?= $value['nik'] ?></td>
                                         <td><?= $value['id_kms'] ?></td>
                                         <td><?= $value['password'] ?></td>
@@ -124,14 +92,10 @@ if ($this->session->flashdata('admin')) {
 </div>
 <script>
     $(document).ready(function() {
-
-
         $('#table_id').DataTable();
-
     });
 </script>
-
-
+<!-- Modal 1-->
 <div class="modal fade " id="exampleModalCenter" tabindex="-2" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
