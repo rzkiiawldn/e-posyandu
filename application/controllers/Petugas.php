@@ -1031,7 +1031,7 @@ class Petugas extends CI_Controller
             'gambar'        => FCPATH . 'assets/img/logo22.png',
             'user'             => $this->db->get_where('dataakun', ['nik' => $this->session->userdata('nik')])->row_array(),
             'dataposyandu'     => $this->db->get_where('dataposyandu', ['kode_posyandu' => $spesifik_kode])->row_array(),
-            'dataibu'          => $this->db->query("SELECT dataibu.nama, dataibu.no_telepon, dataibu.alamat, dataibu.nik, dataanak.nik_wali, dataanak.nama FROM dataibu JOIN dataanak ON dataibu.nik = dataanak.nik_wali WHERE dataibu.kode_posyandu = '$spesifik_kode' ORDER BY dataibu.nama ASC")->result_array()
+            'dataibu'          => $this->db->query("SELECT dataibu.nama AS nama_ibu, dataibu.no_telepon, dataibu.alamat, dataibu.nik, dataanak.nik_wali, dataanak.nama AS nama_anak FROM dataibu JOIN dataanak ON dataibu.nik = dataanak.nik_wali WHERE dataibu.kode_posyandu = '$spesifik_kode' ORDER BY dataibu.nama ASC")->result_array()
         ];
 
         $this->load->view('petugas/laporan/cetak_waliAnak', $data);
