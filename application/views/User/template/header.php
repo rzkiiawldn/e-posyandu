@@ -43,7 +43,7 @@
       </div>
 
       <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between  ">
           <div class="logo">
             <div class="site-logo">
               <a href="<?= base_url('user') ?>" class="js-logo-clone"><strong class="text-primary"><?= $posyandu['nama_posyandu']; ?></strong></a>
@@ -55,15 +55,15 @@
                 <li class="<?php if ($this->uri->segment(2) == 'index') {
                               echo "active";
                             } ?>"><a href=" <?= base_url('user') ?>">Home</a></li>
-                <li class="<?php if ($this->uri->segment(2) == 'imunisasiUser') {
+                <li class="<?php if ($this->uri->segment(2) == 'imunisasiUser' || $this->uri->segment(2) == 'riwayatImunisasi' || $this->uri->segment(2) == 'riwayatPerkembangan' || $this->uri->segment(2) == 'grafikPerkembangan') {
                               echo "active";
                             } ?>"><a href="<?= base_url('user/imunisasiUser') ?>">Perkembangan Anak</a></li>
-                <li class="<?php if ($this->uri->segment(2) == 'pengetahuan' || $this->uri->segment(2) == 'pengetahuanId') {
-                              echo "active";
-                            } ?>"><a href="<?= base_url('user/pengetahuan') ?>">Pengetahuan </a></li>
+                <!-- <li class="<?php if ($this->uri->segment(2) == 'pengetahuan' || $this->uri->segment(2) == 'pengetahuanId') {
+                                  echo "active";
+                                } ?>"><a href="<?= base_url('user/pengetahuan') ?>">Pengetahuan </a></li>
                 <li class="<?php if ($this->uri->segment(2) == 'artikelPosyandu' || $this->uri->segment(2) == 'artikelDetail') {
                               echo "active";
-                            } ?>"><a href="<?= base_url('user/artikelPosyandu') ?>">Artikel</a></li>
+                            } ?>"><a href="<?= base_url('user/artikelPosyandu') ?>">Artikel</a></li> -->
                 <li class="<?php if ($this->uri->segment(2) == 'jadwalPosyandu') {
                               echo "active";
                             } ?>"><a href="<?= base_url('user/jadwalPosyandu') ?>">Jadwal Posyandu</a></li>

@@ -218,7 +218,86 @@ class User extends CI_Controller
         $this->load->view('User/template/footer');
     }
 
-    public function cetak()
+    public function lanjutan($kategori)
+    {
+        $id_kategori = str_replace("_", " ", $kategori);
+        $getKode = $this->db->get_where('dataanak', ['nik' => $this->session->userdata('nik')])->row_array();
+        $spesifikNik = $getKode['nik'];
+        $spesifikIdkms = $getKode['id_kms'];
+
+        $data['getImunisasiUser'] = $this->DataImunisasi->getImunisasiUser($spesifikNik);
+        $data['getKmsUser'] = $this->DataImunisasi->getKmsUser($spesifikIdkms);
+        $data['user'] = $this->db->get_where('dataAnak', ['nik' => $this->session->userdata('nik')])->row_array();
+        $data['artikel'] = $this->db->query("SELECT * FROM artikel WHERE id_kategori = '$id_kategori'")->result_array();
+        // $data['pengetahuan'] = $this->db->query("SELECT * FROM pengetahuan AS a JOIN pengetahuan_kategori AS pk ON a.id_kategori = pk.id_kategori WHERE a.id_kategori = $kategori")->result_array();
+
+        $data['posyandu'] = $this->db->get_where('dataposyandu', ['kode_posyandu' => $data['user']['kode_posyandu']])->row_array();
+        $this->load->view('User/template/header', $data);
+        $this->load->view('User/lanjutan', $data);
+        $this->load->view('User/template/footer');
+    }
+
+    public function riwayatImunisasi()
+    {
+
+        $getKode = $this->db->get_where('dataanak', ['nik' => $this->session->userdata('nik')])->row_array();
+        $spesifikNik = $getKode['nik'];
+        $spesifikIdkms = $getKode['id_kms'];
+
+        $x = $this->DataKMS->get_dataUser($spesifikIdkms)->result();
+        $data['avgKMS'] = json_encode($x);
+
+        $data['getImunisasiUser'] = $this->DataImunisasi->getImunisasiUser($spesifikNik);
+        $data['getKmsUser'] = $this->DataImunisasi->getKmsUser($spesifikIdkms);
+        $data['user'] = $this->db->get_where('dataAnak', ['nik' => $this->session->userdata('nik')])->row_array();
+
+        $data['posyandu'] = $this->db->get_where('dataposyandu', ['kode_posyandu' => $data['user']['kode_posyandu']])->row_array();
+        $this->load->view('User/template/header', $data);
+        $this->load->view('User/riwayatImunisasi', $data);
+        $this->load->view('User/template/footer');
+    }
+
+    public function riwayatPerkembangan()
+    {
+
+        $getKode = $this->db->get_where('dataanak', ['nik' => $this->session->userdata('nik')])->row_array();
+        $spesifikNik = $getKode['nik'];
+        $spesifikIdkms = $getKode['id_kms'];
+
+        $x = $this->DataKMS->get_dataUser($spesifikIdkms)->result();
+        $data['avgKMS'] = json_encode($x);
+
+        $data['getImunisasiUser'] = $this->DataImunisasi->getImunisasiUser($spesifikNik);
+        $data['getKmsUser'] = $this->DataImunisasi->getKmsUser($spesifikIdkms);
+        $data['user'] = $this->db->get_where('dataAnak', ['nik' => $this->session->userdata('nik')])->row_array();
+
+        $data['posyandu'] = $this->db->get_where('dataposyandu', ['kode_posyandu' => $data['user']['kode_posyandu']])->row_array();
+        $this->load->view('User/template/header', $data);
+        $this->load->view('User/riwayatPerkembangan', $data);
+        $this->load->view('User/template/footer');
+    }
+
+    public function grafikPerkembangan()
+    {
+
+        $getKode = $this->db->get_where('dataanak', ['nik' => $this->session->userdata('nik')])->row_array();
+        $spesifikNik = $getKode['nik'];
+        $spesifikIdkms = $getKode['id_kms'];
+
+        $x = $this->DataKMS->get_dataUser($spesifikIdkms)->result();
+        $data['avgKMS'] = json_encode($x);
+
+        $data['getImunisasiUser'] = $this->DataImunisasi->getImunisasiUser($spesifikNik);
+        $data['getKmsUser'] = $this->DataImunisasi->getKmsUser($spesifikIdkms);
+        $data['user'] = $this->db->get_where('dataAnak', ['nik' => $this->session->userdata('nik')])->row_array();
+
+        $data['posyandu'] = $this->db->get_where('dataposyandu', ['kode_posyandu' => $data['user']['kode_posyandu']])->row_array();
+        $this->load->view('User/template/header', $data);
+        $this->load->view('User/grafikPerkembangan', $data);
+        $this->load->view('User/template/footer');
+    }
+
+    public function cetak_perkembangan()
     {
         $this->load->library('dompdf_gen');
 
@@ -235,7 +314,38 @@ class User extends CI_Controller
         $data['user']    = $this->db->get_where('dataAnak', ['nik' => $this->session->userdata('nik')])->row_array();
         $data['dataposyandu'] = $this->db->get_where('dataposyandu', ['kode_posyandu' => $data['user']['kode_posyandu']])->row_array();
 
-        $this->load->view('user/cetak', $data);
+        $this->load->view('user/cetak_perkembangan', $data);
+
+        $paper_size         = 'A4';
+        $orientation        = 'landscape';
+        $html               = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        ob_end_clean();
+        $this->dompdf->stream("laporan.pdf", array('Attachment' => 0));
+        $this->session->set_flashdata('petugas', 'Success as a petugas.');
+    }
+
+    public function cetak_imunisasi()
+    {
+        $this->load->library('dompdf_gen');
+
+        $getKode = $this->db->get_where('dataanak', ['nik' => $this->session->userdata('nik')])->row_array();
+        $spesifikNik = $getKode['nik'];
+        $spesifikIdkms = $getKode['id_kms'];
+
+        $x = $this->DataKMS->get_dataUser($spesifikIdkms)->result();
+        $data['avgKMS'] = json_encode($x);
+        $data['getImunisasiUser'] = $this->DataImunisasi->getImunisasiUser($spesifikNik);
+        $data['getKmsUser'] = $this->DataImunisasi->getKmsUser($spesifikIdkms);
+        $data['judul']   = 'Laporan';
+        $data['gambar']        = FCPATH . 'assets/img/logo22.png';
+        $data['user']    = $this->db->get_where('dataAnak', ['nik' => $this->session->userdata('nik')])->row_array();
+        $data['dataposyandu'] = $this->db->get_where('dataposyandu', ['kode_posyandu' => $data['user']['kode_posyandu']])->row_array();
+
+        $this->load->view('user/cetak_imunisasi', $data);
 
         $paper_size         = 'A4';
         $orientation        = 'landscape';

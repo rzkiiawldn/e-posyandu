@@ -8,7 +8,7 @@ if ($this->session->flashdata('petugas')) {
 <div class="content">
   <div class="row">
 
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <div class="row">
         <div class="col-3">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#kategori">
@@ -58,8 +58,8 @@ if ($this->session->flashdata('petugas')) {
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-8">
+    </div> -->
+    <div class="col-md-12">
       <div class="row">
         <div class="col-3">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -101,7 +101,7 @@ if ($this->session->flashdata('petugas')) {
                     <td><?= $i; ?></td>
                     <td><?= $value['judul'] ?></td>
                     <td><?= substr($value['isi_pengetahuan'], 0, 80) ?></td>
-                    <td><?= $value['kategori'] ?></td>
+                    <td><span class="badge badge-info"><?= $value['kategori'] ?></span></td>
                     <td><img src="<?= base_url('assets/img/pengetahuan/' . $value['foto']) ?>" alt="" class="img" width="100px"></td>
                     <td class>
                       <a class="badge badge-warning btn-lg" href="#" role="button" data-toggle="modal" data-target="#edit<?= $value['id_pengetahuan'] ?>">Edit</a>

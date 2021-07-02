@@ -37,6 +37,7 @@ if ($this->session->flashdata('petugas')) {
                   <th> No </th>
                   <th> Judul </th>
                   <th> Isi </th>
+                  <th> Kategori </th>
                   <th> Tanggal Input </th>
                   <th> Foto </th>
                   <th> Aksi </th>
@@ -49,6 +50,18 @@ if ($this->session->flashdata('petugas')) {
                     <td><?= $i; ?></td>
                     <td><?= $value['judul'] ?></td>
                     <td><?= substr($value['isi_artikel'], 0, 100) ?> ....</td>
+                    <td>
+                      <?php if ($value['id_kategori'] == 'Berat badan lebih') { ?>
+                        <span class="badge badge-info"><?= $value['id_kategori']; ?></span>
+                      <?php } elseif ($value['id_kategori'] == 'Berat badan kurang') { ?>
+                        <span class="badge badge-warning"><?= $value['id_kategori']; ?></span>
+                      <?php } elseif ($value['id_kategori'] == 'Berat badan sangat kurang') { ?>
+                        <span class="badge badge-danger"><?= $value['id_kategori']; ?></span>
+                      <?php } else { ?>
+                        <span class="badge badge-success"><?= $value['id_kategori']; ?></span>
+                      <?php } ?>
+                      <!-- <span class="badge badge-info"><?= $value['id_kategori'] ?></span> -->
+                    </td>
                     <td><?= format_indo($value['created_date']) ?></td>
 
                     <td><img src="<?= base_url('assets/img/artikel/' . $value['foto']) ?>" class="img" width="100px"></td>
@@ -108,6 +121,15 @@ if ($this->session->flashdata('petugas')) {
                         </div>
                       </div>
                     </div>
+                    <div class="form-group col-12">
+                      <label for="id_kategori">Kategori</label>
+                      <select name="id_kategori" id="id_kategori" class="form-control" required>
+                        <option value="" selected disabled>--pilih--</option>
+                        <?php foreach ($kategori as $row) : ?>
+                          <option value="<?= $row ?>"><?= $row ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                    </div>
                     <div class="form-group col-md-12">
                       <label for="isi_artikel">Isi Artikel</label>
                       <textarea class="form-control" id="isi_artikel" rows="3" name="isi_artikel"></textarea>
@@ -155,6 +177,19 @@ if ($this->session->flashdata('petugas')) {
                           <input type="text" class="form-control" name="judul" value="<?= $value['judul'] ?>" required>
                           <input type="hidden" class="form-control" name="id_artikel" value="<?= $value['id_artikel'] ?>" required>
                         </div>
+                      </div>
+                      <div class="form-group col-12">
+                        <label for="id_kategori">Kategori</label>
+                        <select name="id_kategori" id="id_kategori" class="form-control" required>
+                          <option value="" selected disabled>--pilih--</option>
+                          <?php foreach ($kategori as $row) : ?>
+                            <?php if ($row == $value['id_kategori']) { ?>
+                              <option value="<?= $row ?>" selected><?= $row ?></option>
+                            <?php } else { ?>
+                              <option value="<?= $row ?>"><?= $row ?></option>
+                            <?php } ?>
+                          <?php endforeach; ?>
+                        </select>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">

@@ -462,7 +462,13 @@ class Petugas extends CI_Controller
 
 
         $data['title'] = 'Data Artikel';
-        $data['artikel'] = $this->db->get_where('artikel', ['created_by' => $spesifik_kode])->result_array();
+        $data['artikel'] = $this->db->query(" SELECT * FROM artikel WHERE created_by = '$spesifik_kode'")->result_array();
+        $data['kategori'] = [
+            'Berat badan sangat kurang',
+            'Berat badan kurang',
+            'Berat badan normal',
+            'Berat badan lebih',
+        ];
         $this->load->view('Petugas/template/header', $data);
         $this->load->view('Petugas/artikel', $data);
         $this->load->view('Petugas/template/footer');
@@ -492,6 +498,7 @@ class Petugas extends CI_Controller
             'isi_artikel'       => $this->input->post('isi_artikel'),
             'view'              => 0,
             'foto'              => $foto,
+            'id_kategori'       => $this->input->post('id_kategori'),
             'created_by'        => $this->input->post('created_by'),
             'created_date'      => date('Y-m-d'),
         ];
@@ -507,6 +514,7 @@ class Petugas extends CI_Controller
         $id_artikel     = $this->input->post('id_artikel');
         $judul          = $this->input->post('judul');
         $isi_artikel    = $this->input->post('isi_artikel');
+        $id_kategori    = $this->input->post('id_kategori');
 
         $foto = $_FILES['foto'];
         if ($foto = '') {
@@ -521,6 +529,7 @@ class Petugas extends CI_Controller
             } else {
                 $this->db->set('judul', $judul);
                 $this->db->set('isi_artikel', $isi_artikel);
+                $this->db->set('id_kategori', $id_kategori);
                 $this->db->where('id_artikel', $id_artikel);
                 $this->db->update('artikel');
                 $this->session->set_flashdata('petugas', 'Success as a petugas.');
@@ -531,6 +540,7 @@ class Petugas extends CI_Controller
 
         $this->db->set('judul', $judul);
         $this->db->set('isi_artikel', $isi_artikel);
+        $this->db->set('id_kategori', $id_kategori);
         $this->db->where('id_artikel', $id_artikel);
         $this->db->update('artikel');
         $this->session->set_flashdata('petugas', 'Success as a petugas.');
@@ -544,130 +554,130 @@ class Petugas extends CI_Controller
         $this->session->set_flashdata('petugas', 'Success as a petugas.');
         redirect('Petugas/artikel');
     }
-    public function pengetahuan()
-    {
-        $getKode = $this->db->get_where('dataakun', ['nik' => $this->session->userdata('nik')])->row_array();
+    // public function pengetahuan()
+    // {
+    //     $getKode = $this->db->get_where('dataakun', ['nik' => $this->session->userdata('nik')])->row_array();
 
-        $spesifik_kode = $getKode['kode_posyandu'];
-        $data['user'] = $this->db->get_where('dataakun', ['nik' => $this->session->userdata('nik')])->row_array();
+    //     $spesifik_kode = $getKode['kode_posyandu'];
+    //     $data['user'] = $this->db->get_where('dataakun', ['nik' => $this->session->userdata('nik')])->row_array();
 
-        $data['kode_posyandu'] = $getKode['kode_posyandu'];
-
-
-        $data['title'] = 'Data pengetahuan';
-        $data['pengetahuan'] = $this->db->query(" SELECT * FROM pengetahuan JOIN pengetahuan_kategori ON pengetahuan.id_kategori = pengetahuan_kategori.id_kategori WHERE kode_posyandu = '$spesifik_kode'")->result_array();
-        $data['kategori'] = $this->db->get('pengetahuan_kategori')->result_array();
-        $this->load->view('Petugas/template/header', $data);
-        $this->load->view('Petugas/pengetahuan', $data);
-        $this->load->view('Petugas/template/footer');
-    }
-
-    public function tambah_pengetahuan()
-    {
-        $foto = $_FILES['foto'];
-        if ($foto = '') {
-        } else {
-            $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
-            $config['max_size']         = '2048';
-            $config['upload_path']      = './assets/img/pengetahuan/';
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload('foto')) {
-                $foto   = $this->upload->data('file_name');
-            } else {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Tambah foto gagal, silahkan cek file yang anda masukan</div>');
-                redirect('petugas/pengetahuan');
-            }
-        }
-        $data = [
-            'judul'             => $this->input->post('judul'),
-            'isi_pengetahuan'   => $this->input->post('isi_pengetahuan'),
-            'id_kategori'       => $this->input->post('id_kategori'),
-            'foto'              => $foto,
-            'kode_posyandu'     => $this->input->post('kode_posyandu'),
-            'created_date'      => date('Y-m-d'),
-        ];
-
-        $this->db->insert('pengetahuan', $data);
-        $this->session->set_flashdata('petugas', 'Success as a petugas.');
-        redirect('Petugas/pengetahuan');
-    }
-
-    public function edit_pengetahuan()
-    {
-
-        $id_pengetahuan     = $this->input->post('id_pengetahuan');
-        $judul              = $this->input->post('judul');
-        $isi_pengetahuan    = $this->input->post('isi_pengetahuan');
-        $id_kategori        = $this->input->post('id_kategori');
-
-        $foto = $_FILES['foto'];
-        if ($foto = '') {
-        } else {
-            $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
-            $config['max_size']         = '2048';
-            $config['upload_path']      = './assets/img/pengetahuan/';
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload('foto')) {
-                $foto   = $this->upload->data('file_name');
-                $this->db->set('foto', $foto);
-            } else {
-                $this->db->set('judul', $judul);
-                $this->db->set('isi_pengetahuan', $isi_pengetahuan);
-                $this->db->set('id_kategori', $id_kategori);
-                $this->db->where('id_pengetahuan', $id_pengetahuan);
-                $this->db->update('pengetahuan');
-                $this->session->set_flashdata('petugas', 'Success as a petugas.');
-                redirect('Petugas/pengetahuan');
-            }
-        }
+    //     $data['kode_posyandu'] = $getKode['kode_posyandu'];
 
 
-        $this->db->set('judul', $judul);
-        $this->db->set('isi_pengetahuan', $isi_pengetahuan);
-        $this->db->set('id_kategori', $id_kategori);
-        $this->db->where('id_pengetahuan', $id_pengetahuan);
-        $this->db->update('pengetahuan');
-        $this->session->set_flashdata('petugas', 'Success as a petugas.');
-        redirect('Petugas/pengetahuan');
-    }
+    //     $data['title'] = 'Data pengetahuan';
+    //     $data['pengetahuan'] = $this->db->query(" SELECT * FROM pengetahuan JOIN pengetahuan_kategori ON pengetahuan.id_kategori = pengetahuan_kategori.id_kategori WHERE kode_posyandu = '$spesifik_kode'")->result_array();
+    //     $data['kategori'] = $this->db->get('pengetahuan_kategori')->result_array();
+    //     $this->load->view('Petugas/template/header', $data);
+    //     $this->load->view('Petugas/pengetahuan', $data);
+    //     $this->load->view('Petugas/template/footer');
+    // }
 
-    public function hapus_pengetahuan($id_pengetahuan)
-    {
-        $this->db->where('id_pengetahuan', $id_pengetahuan);
-        $this->db->delete('pengetahuan');
-        $this->session->set_flashdata('petugas', 'Success as a petugas.');
-        redirect('Petugas/pengetahuan');
-    }
-    public function tambah_kategori()
-    {
-        $data = [
-            'kategori'             => $this->input->post('kategori')
-        ];
+    // public function tambah_pengetahuan()
+    // {
+    //     $foto = $_FILES['foto'];
+    //     if ($foto = '') {
+    //     } else {
+    //         $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
+    //         $config['max_size']         = '2048';
+    //         $config['upload_path']      = './assets/img/pengetahuan/';
+    //         $this->load->library('upload', $config);
+    //         if ($this->upload->do_upload('foto')) {
+    //             $foto   = $this->upload->data('file_name');
+    //         } else {
+    //             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Tambah foto gagal, silahkan cek file yang anda masukan</div>');
+    //             redirect('petugas/pengetahuan');
+    //         }
+    //     }
+    //     $data = [
+    //         'judul'             => $this->input->post('judul'),
+    //         'isi_pengetahuan'   => $this->input->post('isi_pengetahuan'),
+    //         'id_kategori'       => $this->input->post('id_kategori'),
+    //         'foto'              => $foto,
+    //         'kode_posyandu'     => $this->input->post('kode_posyandu'),
+    //         'created_date'      => date('Y-m-d'),
+    //     ];
 
-        $this->db->insert('pengetahuan_kategori', $data);
-        $this->session->set_flashdata('petugas', 'Success as a petugas.');
-        redirect('Petugas/pengetahuan');
-    }
+    //     $this->db->insert('pengetahuan', $data);
+    //     $this->session->set_flashdata('petugas', 'Success as a petugas.');
+    //     redirect('Petugas/pengetahuan');
+    // }
 
-    public function edit_kategori()
-    {
+    // public function edit_pengetahuan()
+    // {
 
-        $id_kategori     = $this->input->post('id_kategori');
-        $kategori              = $this->input->post('kategori');
-        $this->db->set('kategori', $kategori);
-        $this->db->where('id_kategori', $id_kategori);
-        $this->db->update('pengetahuan_kategori');
-        $this->session->set_flashdata('petugas', 'Success as a petugas.');
-        redirect('Petugas/pengetahuan');
-    }
+    //     $id_pengetahuan     = $this->input->post('id_pengetahuan');
+    //     $judul              = $this->input->post('judul');
+    //     $isi_pengetahuan    = $this->input->post('isi_pengetahuan');
+    //     $id_kategori        = $this->input->post('id_kategori');
 
-    public function hapus_kategori($id_kategori)
-    {
-        $this->db->where('id_kategori', $id_kategori);
-        $this->db->delete('pengetahuan_kategori');
-        $this->session->set_flashdata('petugas', 'Success as a petugas.');
-        redirect('Petugas/pengetahuan');
-    }
+    //     $foto = $_FILES['foto'];
+    //     if ($foto = '') {
+    //     } else {
+    //         $config['allowed_types']    = 'jpg|PNG|png|jpeg|JPG|JPEG';
+    //         $config['max_size']         = '2048';
+    //         $config['upload_path']      = './assets/img/pengetahuan/';
+    //         $this->load->library('upload', $config);
+    //         if ($this->upload->do_upload('foto')) {
+    //             $foto   = $this->upload->data('file_name');
+    //             $this->db->set('foto', $foto);
+    //         } else {
+    //             $this->db->set('judul', $judul);
+    //             $this->db->set('isi_pengetahuan', $isi_pengetahuan);
+    //             $this->db->set('id_kategori', $id_kategori);
+    //             $this->db->where('id_pengetahuan', $id_pengetahuan);
+    //             $this->db->update('pengetahuan');
+    //             $this->session->set_flashdata('petugas', 'Success as a petugas.');
+    //             redirect('Petugas/pengetahuan');
+    //         }
+    //     }
+
+
+    //     $this->db->set('judul', $judul);
+    //     $this->db->set('isi_pengetahuan', $isi_pengetahuan);
+    //     $this->db->set('id_kategori', $id_kategori);
+    //     $this->db->where('id_pengetahuan', $id_pengetahuan);
+    //     $this->db->update('pengetahuan');
+    //     $this->session->set_flashdata('petugas', 'Success as a petugas.');
+    //     redirect('Petugas/pengetahuan');
+    // }
+
+    // public function hapus_pengetahuan($id_pengetahuan)
+    // {
+    //     $this->db->where('id_pengetahuan', $id_pengetahuan);
+    //     $this->db->delete('pengetahuan');
+    //     $this->session->set_flashdata('petugas', 'Success as a petugas.');
+    //     redirect('Petugas/pengetahuan');
+    // }
+    // public function tambah_kategori()
+    // {
+    //     $data = [
+    //         'kategori'             => $this->input->post('kategori')
+    //     ];
+
+    //     $this->db->insert('pengetahuan_kategori', $data);
+    //     $this->session->set_flashdata('petugas', 'Success as a petugas.');
+    //     redirect('Petugas/pengetahuan');
+    // }
+
+    // public function edit_kategori()
+    // {
+
+    //     $id_kategori     = $this->input->post('id_kategori');
+    //     $kategori              = $this->input->post('kategori');
+    //     $this->db->set('kategori', $kategori);
+    //     $this->db->where('id_kategori', $id_kategori);
+    //     $this->db->update('pengetahuan_kategori');
+    //     $this->session->set_flashdata('petugas', 'Success as a petugas.');
+    //     redirect('Petugas/pengetahuan');
+    // }
+
+    // public function hapus_kategori($id_kategori)
+    // {
+    //     $this->db->where('id_kategori', $id_kategori);
+    //     $this->db->delete('pengetahuan_kategori');
+    //     $this->session->set_flashdata('petugas', 'Success as a petugas.');
+    //     redirect('Petugas/pengetahuan');
+    // }
 
 
     public function kegiatan()

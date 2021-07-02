@@ -105,14 +105,14 @@ if ($this->session->flashdata('petugas')) {
                             <p>Artikel</p>
                         </a>
                     </li>
-                    <li class="nav-item <?php if ($this->uri->segment(2) == 'pengetahuan') {
-                                            echo "active";
-                                        } ?>">
+                    <!-- <li class="nav-item <?php if ($this->uri->segment(2) == 'pengetahuan') {
+                                                    echo "active";
+                                                } ?>">
                         <a class="nav-link" href="<?= base_url() ?>petugas/pengetahuan">
                             <i class="material-icons">edit</i>
                             <p>Pengetahuan Anak</p>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item <?php if ($this->uri->segment(2) == 'laporan') {
                                                     echo "active";
                                                 } ?>">
