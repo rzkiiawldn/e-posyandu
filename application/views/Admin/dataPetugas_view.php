@@ -1,4 +1,4 @@
-<?php
+ <?php
 if ($this->session->flashdata('admin')) {
     $this->session->set_flashdata('admin', 'Success as a admin.');
 } else {
@@ -14,6 +14,13 @@ if ($this->session->flashdata('admin')) {
         </div>
         <div class="col">
             <a class="btn btn-primary" target="_blank" href="<?= base_url('admin/cetak_kader') ?>">Cetak Data Kader</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            
+            <?= form_error('email', '<div class ="alert alert-danger" role="alert">','</div>'); ?>
         </div>
     </div>
 
@@ -150,7 +157,8 @@ if ($this->session->flashdata('admin')) {
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating" name="password">Password</label>
-                                                <input type="password" class="form-control" name="password" required>
+                                                <input type="password" class="form-control" name="password" pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" required>
+                                                <span style="color: red; font-size: 12px;">*Min. 6 ch, Kombinasi Huruf Kapital Dan huruf kecil</span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -196,3 +204,60 @@ if ($this->session->flashdata('admin')) {
         </div>
     </div>
 </div>
+
+<script>
+var myInput = document.getElementById("password");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+myInput.onfocus = function() {
+    document.getElementById("message").style.display = "block";
+}
+
+myInput.onblur = function() {
+    document.getElementById("message").style.display = "none";
+}
+
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput.value.length >= 6) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>

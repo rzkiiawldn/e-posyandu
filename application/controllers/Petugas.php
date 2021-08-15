@@ -3,10 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Petugas extends CI_Controller
 {
-    public function __construct()
+     public function __construct()
     {
         parent::__construct();
         $this->load->library("session");
+        $this->load->library('form_validation');
         $this->load->model('DataAnak');
         $this->load->model('DataIbu');
         $this->load->model('DataImunisasi');

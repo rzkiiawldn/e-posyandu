@@ -52,6 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
               <button type="submit" class="btn btn-success btn-block pull-right">Masuk</button>
             </form>
             <div class="container">
+               <center><a href="<?= base_url() ?>auth/forgotPassword" style = "color: black";>Lupa Password?</a></center> 
               <div class="row">
                 <div style="text-align:center">
                   <a href="<?= base_url() ?>auth" class="btn btn-primary ml-2">Login Admin</a>

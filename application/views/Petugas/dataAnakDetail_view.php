@@ -16,6 +16,9 @@
                             <tr>
                                 <th width="150px">ID KMS</th>
                                 <th width="300px">: <?= $value['id_kms'] ?></th>
+                            </tr><tr>
+                                <th width="150px">Email</th>
+                                <th width="300px">: <?= $value['email'] ?></th>
                             </tr>
                             <tr>
                                 <th width="150px">Kode Posyandu</th>

@@ -10,7 +10,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <link rel="icon" type="image/png" href="https://img.icons8.com/windows/96/000000/children-faces.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    LOGIN
+    <?= $title; ?>
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -29,35 +29,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <img src="<?= base_url() ?>assets/img/logo.jpeg" height="150" style="padding-top: 15px" class="rounded mx-auto d-block mb-10" />
     <h3 class="text-center"><strong>PanKesPos</strong></h3>
   </div>
+  <?= $this->session->flashdata('message'); ?>
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-md-5">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title text-center">LOGIN ORANG TUA</h4>
+            <h4 class="card-title text-center">Lupa Password ?</h4>
             <?= $this->session->tempdata('err'); ?>
             <?= $this->session->tempdata('message'); ?>
             <p class="card-category"></p>
           </div>
           <div class="card-body">
-            <form action="<?= base_url() ?>auth/postLogin3" method="POST">
+            <form action="<?= base_url('auth/forgotPassword'); ?>" method="POST">
               <div class="form-group">
-                <label class="bmd-label-floating" style="color:black;">ID KMS</label>
-                <input type="text" class="form-control" name="id_kms" required>
+                <label class="bmd-label-floating" name="email" style="color:black;">Email</label>
+                <input type="text" class="form-control" name="email" required>
               </div>
-              <div class="form-group">
-                <label class="bmd-label-floating" name="password" style="color:black;">Password</label>
-                <input type="password" class="form-control" name="password" required>
-              </div>
-              <button type="submit" class="btn btn-success btn-block pull-right">Masuk</button>
+              <button type="submit" class="btn btn-success btn-block pull-right">Reset Password</button>
             </form>
             <div class="container">
-              <center><a href="<?= base_url('auth/forgotPassword'); ?>" style = "color: black";>Lupa Password?</a></center> 
               <div class="row">
                 <div style="text-align:center">
                   <a href="<?= base_url() ?>auth" class="btn btn-primary ml-2">Login Admin</a>
                   <a href="<?= base_url() ?>auth/loginKader" class="btn btn-primary ml-2">Login Kader</a>
-                  <a href="<?= base_url() ?>auth/loginUser" class="btn btn-primary ml-2">Login ORANG TUA</a>
+                  <a href="<?= base_url() ?>auth/loginUser" class="btn btn-primary ml-2">Login Orang Tua</a>
                 </div>
               </div>
             </div>

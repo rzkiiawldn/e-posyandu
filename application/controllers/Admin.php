@@ -7,6 +7,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->library("session");
+        $this->load->library('form_validation');
         $this->load->model('DataAnak');
         $this->load->model('DataIbu');
         $this->load->model('DataImunisasi');
@@ -36,6 +37,9 @@ class Admin extends CI_Controller
 
     public function DataPetugas()
     {
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[dataakun.email]');
+        
+        if( $this->form_validation->run() == false){
 
         $data['title'] = 'Data Kader';
         $data['user'] = $this->db->get_where('dataakun', ['nik' => $this->session->userdata('nik')])->row_array();
@@ -45,6 +49,10 @@ class Admin extends CI_Controller
         $this->load->view('Admin/template/header', $data);
         $this->load->view('Admin/dataPetugas_view', $data);
         $this->load->view('Admin/template/footer');
+
+        }
+
+        
     }
 
     public function DataPetugas_edit($id)
@@ -64,9 +72,15 @@ class Admin extends CI_Controller
 
     public function TambahDataPetugas()
     {
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[dataakun.email]');
+        
+        if( $this->form_validation->run() == false){
+            $this->DataPetugas();
+        } else {
         $this->DataAkun->saveData();
         $this->session->set_flashdata('admin', 'Success as a admin.');
         redirect('Admin/DataPetugas');
+        }
     }
 
     public function UbahDataPetugas($id)
@@ -75,7 +89,6 @@ class Admin extends CI_Controller
         $id_akun = $this->input->post('id_akun');
 
         $data['user'] = $this->DataAkun->getAkunEdit($id_akun);
-
 
 
 
@@ -113,6 +126,7 @@ class Admin extends CI_Controller
         //         echo $this->upload->dispay_errors();
         //     }
         // }
+
 
         $data_akun = [
             'nik' => $nik,

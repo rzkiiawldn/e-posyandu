@@ -176,6 +176,7 @@ class DataAnak extends CI_Model
         $kode_posyandu = $this->input->post('kode_posyandu');
         $id_kms = $this->input->post('id_kms');
         $nama    = $this->input->post('nama');
+        $email  = $this->input->post('email');
         $password = $this->input->post('password');
         $tempat_lahir    = $this->input->post('tempat_lahir');
         $tanggal_lahir = $this->input->post('tanggal_lahir');
@@ -191,6 +192,7 @@ class DataAnak extends CI_Model
             'kode_posyandu' => $kode_posyandu,
             'id_kms' => $id_kms,
             'nama' => $nama,
+            'email' => $email,
             'password' => $password,
             'tempat_lahir' => $tempat_lahir,
             'tanggal_lahir' => $tanggal_lahir,
@@ -213,6 +215,7 @@ class DataAnak extends CI_Model
     public function ubahData($nik, $data)
     {
         $nama    = $this->input->post('nama');
+        $email  = $this->input->post('email');
         $tempat_lahir    = $this->input->post('tempat_lahir');
         $tanggal_lahir = $this->input->post('tanggal_lahir');
         $jk = $this->input->post('jk');
@@ -225,6 +228,7 @@ class DataAnak extends CI_Model
         $data_anak = [
             'nik' => $nik,
             'nama' => $nama,
+            'email' => $email,
             'password' => $password,
             'tempat_lahir' => $tempat_lahir,
             'tanggal_lahir' => $tanggal_lahir,

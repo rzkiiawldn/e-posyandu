@@ -72,6 +72,9 @@ if ($this->session->flashdata('admin')) {
                                     Nama
                                 </th>
                                 <th>
+                                    Email
+                                </th>
+                                <th>
                                     Umur
                                 </th>
                                 <th>
@@ -96,6 +99,7 @@ if ($this->session->flashdata('admin')) {
                                         <td><?= $value['id_kms'] ?></td>
                                         <td><?= $value['password'] ?></td>
                                         <td><?= $value['nama'] ?></td>
+                                        <td><?= $value['email'] ?></td>
                                         <td><?php
                                             $birthDate = new DateTime($value['tanggal_lahir']);
                                             $today = new DateTime("today");
